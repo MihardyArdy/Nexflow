@@ -48,7 +48,7 @@ export function Nav() {
         )}
       >
         <a href="#top" aria-label="Nexflow beranda">
-          <Logo />
+          <Logo priority />
         </a>
 
         <nav

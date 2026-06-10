@@ -12,7 +12,7 @@ export function Pricing() {
         <SectionHeading
           eyebrow="Harga Transparan"
           title="Pilih Paket yang Cocok"
-          desc="Tanpa biaya tersembunyi. Setup sekali, langganan bulanan, batalkan kapan saja."
+          desc="Mulai dari Rp 199rb/bulan — coba gratis 7 hari, tidak perlu kartu kredit."
         />
         <PricingPlans />
         <PricingTable />

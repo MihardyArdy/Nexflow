@@ -36,18 +36,18 @@ const mono = JetBrains_Mono({
   weight: ["400", "500", "600"],
 });
 
-const ICON =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2310b981'/%3E%3Cpath d='M6 8L14 16L6 24M16 8L24 16L16 24' stroke='%23000' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E";
-
 export const metadata: Metadata = {
   title: "Nexflow — Otomatisasi UMKM",
   description:
-    "Otomatiskan WhatsApp bot, invoice, dan sinkronisasi stok UMKM Anda. Setup cepat, harga terjangkau.",
-  icons: { icon: ICON },
+    "Spesialis AI WhatsApp Assistant untuk UMKM Indonesia. Balas pesan 24/7, lead follow-up otomatis, dan laporan bisnis harian.",
+  icons: {
+    icon: "/nexflow-logo.webp",
+    apple: "/nexflow-logo.webp",
+  },
   openGraph: {
     title: "Nexflow — Otomatisasi UMKM",
     description:
-      "Otomatiskan WhatsApp bot, invoice, dan sinkronisasi stok UMKM Anda. Setup cepat, harga terjangkau.",
+      "Spesialis AI WhatsApp Assistant untuk UMKM Indonesia. Balas pesan 24/7, lead follow-up otomatis, dan laporan bisnis harian.",
     type: "website",
     locale: "id_ID",
     siteName: "Nexflow",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nexflow — Otomatisasi UMKM",
     description:
-      "Otomatiskan WhatsApp bot, invoice, dan sinkronisasi stok UMKM Anda. Setup cepat, harga terjangkau.",
+      "Spesialis AI WhatsApp Assistant untuk UMKM Indonesia. Balas pesan 24/7, lead follow-up otomatis, dan laporan bisnis harian.",
   },
 };
 

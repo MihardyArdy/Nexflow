@@ -1,11 +1,11 @@
 import type { LucideIcon } from "lucide-react";
 import {
   MessageSquare,
-  FileText,
-  Boxes,
+  UserX,
+  EyeOff,
   Bot,
-  ReceiptText,
-  RefreshCcw,
+  Target,
+  Sunrise,
   ShieldCheck,
   Zap,
   Headset,
@@ -31,9 +31,9 @@ export interface ChatMessage {
 
 export const HERO_CHAT: ChatMessage[] = [
   { side: "in", text: "Halo! Saya mau order 2 kaos polos putih size M 🙏" },
-  { side: "out", text: "Halo kak! Stok tersedia ✅ Total: Rp120.000. Lanjut bayar?" },
+  { side: "out", text: "Halo kak! Barangnya ready ✅ Total: Rp120.000. Lanjut bayar?" },
   { side: "in", text: "Iya lanjut, transfer BCA ya" },
-  { side: "out", text: "Invoice sudah dikirim 🧾 BCA 1234567890 a/n Toko Nexflow." },
+  { side: "out", text: "Siap, pembayaran dikonfirmasi 🎉 BCA 1234567890 a/n Toko Nexflow." },
 ];
 
 /* ------------------------------ Brands -------------------------------- */
@@ -42,7 +42,6 @@ export const BRANDS = [
   "Tokopedia",
   "Shopee",
   "TikTok Shop",
-  "Midtrans",
   "Xendit",
   "Google Sheets",
   "Moka POS",
@@ -63,14 +62,14 @@ export const PROBLEMS: Problem[] = [
     desc: "Ratusan pesan dari WhatsApp, Shopee, Tokopedia dibalas satu per satu. Waktu habis, pelanggan menunggu.",
   },
   {
-    icon: FileText,
-    title: "Invoice & Pembukuan Berantakan",
-    desc: "Invoice manual di Word, catat di buku, rekap di Excel. Salah hitung, lupa tagih, arus kas tak terpantau.",
+    icon: UserX,
+    title: "Prospek Masuk Tapi Hilang",
+    desc: "Calon pembeli tanya-tanya lalu menghilang. Tak ada yang menilai mana lead serius dan menindaklanjutinya — closing pun bocor.",
   },
   {
-    icon: Boxes,
-    title: "Stok Tidak Sinkron",
-    desc: "Jual di 3 marketplace tapi stok diupdate manual. Overselling terjadi, pelanggan kecewa, reputasi turun.",
+    icon: EyeOff,
+    title: "Buta Performa Bisnis Harian",
+    desc: "Berapa order hari ini? Berapa lead baru? Tanpa rekap manual yang melelahkan, kamu tak pernah benar-benar tahu.",
   },
 ];
 
@@ -88,33 +87,36 @@ export const SERVICES: Service[] = [
     num: "01",
     icon: Bot,
     title: "AI WhatsApp Assistant",
-    desc: "Bot cerdas yang membalas pesan pelanggan 24/7, memproses order, dan mengirim konfirmasi otomatis.",
+    desc: "Bot AI yang membalas pesan pelanggan 24/7 dengan respons natural, memproses order, mengecek ketersediaan, dan mengirim konfirmasi — semua tanpa kamu harus online.",
     features: [
-      "Balas pesan dalam <3 detik",
+      "Balas pesan dalam <3 detik, 24/7",
       "Proses order & konfirmasi otomatis",
-      "Integrasi multi-platform",
+      "Deteksi intent pelanggan (beli, tanya, komplain)",
+      "Eskalasi otomatis ke owner untuk kasus kompleks",
     ],
   },
   {
     num: "02",
-    icon: ReceiptText,
-    title: "Auto Billing & Invoice",
-    desc: "Sistem penagihan otomatis yang membuat invoice profesional dan memantau pembayaran.",
+    icon: Target,
+    title: "Lead Grading & Follow-up",
+    desc: "Bot otomatis menilai setiap prospek yang masuk — mana yang serius beli, mana yang masih ragu. Follow-up terjadwal dikirim otomatis sampai deal closed.",
     features: [
-      "Invoice PDF otomatis terkirim",
-      "Reminder pembayaran terjadwal",
-      "Integrasi Midtrans & Xendit",
+      "Auto-grade leads berdasarkan respons",
+      "Notifikasi lead panas langsung ke owner",
+      "Notifikasi lead panas ke owner",
+      "Tidak ada lead panas yang terlewat",
     ],
   },
   {
     num: "03",
-    icon: RefreshCcw,
-    title: "Smart Inventory Sync",
-    desc: "Sinkronisasi stok real-time di semua platform jualan. Stok selalu akurat, tidak ada overselling.",
+    icon: Sunrise,
+    title: "Daily Business Briefing",
+    desc: "Setiap pagi, laporan bisnis langsung masuk ke WhatsApp kamu — ringkasan order, lead baru, follow-up pending, dan performa bot kemarin.",
     features: [
-      "Sync Tokopedia, Shopee, TikTok",
-      "Alert stok menipis otomatis",
-      "Update stok dalam <30 detik",
+      "Laporan order harian otomatis",
+      "Alert lead baru & follow-up pending",
+      "Performa bot real-time",
+      "Dikirim langsung ke WhatsApp owner",
     ],
   },
 ];
@@ -130,12 +132,12 @@ export const ADVANTAGES: Advantage[] = [
   {
     icon: ShieldCheck,
     title: "Dibuat untuk UMKM Indonesia",
-    desc: "Ekosistem lokal — Tokopedia, Shopee, WhatsApp, Midtrans sudah terintegrasi.",
+    desc: "Dirancang khusus untuk UMKM Indonesia — terhubung langsung dengan WhatsApp, Tokopedia, dan Shopee yang sudah kamu pakai.",
   },
   {
     icon: Zap,
     title: "Setup Cepat, Tanpa Ribet",
-    desc: "Live dalam 30 hari. Tidak perlu tim IT, tim Nexflow yang handle.",
+    desc: "Live dalam 1-3 hari kerja. Tidak perlu tim IT — kami yang setup semuanya dari awal sampai jalan.",
   },
   {
     icon: Headset,
@@ -145,7 +147,7 @@ export const ADVANTAGES: Advantage[] = [
   {
     icon: TrendingUp,
     title: "Harga Terjangkau, ROI Jelas",
-    desc: "Mulai Rp250.000/bulan — hemat 6+ jam kerja per hari.",
+    desc: "Mulai Rp199.000/bulan — hemat 6+ jam kerja per hari. Coba gratis 7 hari, tidak perlu kartu kredit.",
   },
 ];
 
@@ -166,7 +168,7 @@ export const STEPS: Step[] = [
   },
   {
     num: "02",
-    day: "Hari 2–14",
+    day: "Hari 1–3",
     title: "Setup & Integrasi",
     desc: "Kami setup sistem, integrasi platform, dan konfigurasi bot. Anda tidak perlu menyentuh kode.",
   },
@@ -174,48 +176,10 @@ export const STEPS: Step[] = [
     num: "03",
     day: "Hari 15+",
     title: "Live & Pantau",
-    desc: "Sistem berjalan otomatis 24/7. Anda cukup pantau dashboard dan fokus mengembangkan bisnis.",
+    desc: "Sistem berjalan otomatis 24/7. Anda cukup pantau laporan di WhatsApp kamu dan fokus mengembangkan bisnis.",
   },
 ];
 
-/* ---------------------------- Testimonials ---------------------------- */
-export interface Testimonial {
-  quote: string;
-  initials: string;
-  name: string;
-  meta: string;
-}
-
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    quote:
-      "Dulu saya habiskan 5–6 jam sehari cuma buat balas WA dan buat invoice. Sekarang semua otomatis, saya bisa fokus ke produksi.",
-    initials: "AR",
-    name: "Arini Rahayu",
-    meta: "Owner Toko Baju Arini · Bandung",
-  },
-  {
-    quote:
-      "Bot WhatsApp-nya luar biasa. Pelanggan kira masih dibalas manusia. Penjualan naik 40% dalam 2 bulan pertama!",
-    initials: "BW",
-    name: "Budi Wijaya",
-    meta: "Owner Toko Elektronik BW · Jakarta",
-  },
-  {
-    quote:
-      "Stok dulu sering overselling karena jual di 3 marketplace. Sekarang sinkron real-time, tidak ada lagi komplain.",
-    initials: "CS",
-    name: "Citra Sari",
-    meta: "Owner CS Beauty · Surabaya",
-  },
-  {
-    quote:
-      "Tim Nexflow sangat responsif dan profesional. Setup cepat, sistem berjalan mulus sejak hari pertama. Worth it.",
-    initials: "DP",
-    name: "Dian Pratama",
-    meta: "CEO Warung Digital · Yogyakarta",
-  },
-];
 
 /* ------------------------------ Pricing ------------------------------- */
 export interface PlanFeature {
@@ -228,6 +192,10 @@ export interface Plan {
   desc: string;
   priceMonthly: string;
   priceYearly: string;
+  /** Total billed once per year in yearly mode, e.g. "Rp 1.908.000". */
+  priceYearlyTotal: string;
+  /** Annual saving vs paying monthly, e.g. "Rp 480.000". */
+  priceYearlySave: string;
   setup: string;
   features: PlanFeature[];
   cta: string;
@@ -239,16 +207,19 @@ export const PLANS: Plan[] = [
   {
     name: "Starter",
     desc: "Untuk UMKM yang baru mulai otomatisasi.",
-    priceMonthly: "Rp 250rb",
-    priceYearly: "Rp 200rb",
+    priceMonthly: "Rp 199rb",
+    priceYearly: "Rp 159rb",
+    priceYearlyTotal: "Rp 1.908.000",
+    priceYearlySave: "Rp 480.000",
     setup: "Setup Gratis",
     features: [
-      { label: "Bot WhatsApp dasar", included: true },
-      { label: "500 auto-reply / bulan", included: true },
-      { label: "50 invoice / bulan", included: true },
-      { label: "1 platform marketplace", included: true },
-      { label: "Support email", included: true },
-      { label: "Sinkronisasi stok", included: false },
+      { label: "AI WhatsApp Assistant (dasar)", included: true },
+      { label: "Unlimited auto-reply 24/7", included: true },
+      { label: "1 nomor WhatsApp Business", included: true },
+      { label: "Support WA prioritas", included: true },
+      { label: "Coba gratis 7 hari", included: true },
+      { label: "Deteksi & notif lead panas", included: false },
+      { label: "Daily business briefing", included: false },
       { label: "Custom workflow", included: false },
     ],
     cta: "Mulai Starter →",
@@ -258,16 +229,19 @@ export const PLANS: Plan[] = [
   {
     name: "Standard",
     desc: "Pilihan tepat untuk bisnis yang ingin scaling.",
-    priceMonthly: "Rp 600rb",
-    priceYearly: "Rp 480rb",
-    setup: "Setup Rp 500.000",
+    priceMonthly: "Rp 499rb",
+    priceYearly: "Rp 399rb",
+    priceYearlyTotal: "Rp 4.788.000",
+    priceYearlySave: "Rp 1.200.000",
+    setup: "Setup Rp 299.000",
     features: [
-      { label: "WhatsApp + AI Assistant", included: true },
-      { label: "Unlimited auto-reply", included: true },
-      { label: "500 invoice / bulan", included: true },
-      { label: "2 channel marketplace", included: true },
+      { label: "AI WhatsApp Assistant (full)", included: true },
+      { label: "Unlimited percakapan", included: true },
+      { label: "Deteksi & notif lead panas ke owner", included: true },
+      { label: "Daily business briefing ke owner", included: true },
+      { label: "1 nomor WhatsApp Business", included: true },
       { label: "Support WA prioritas", included: true },
-      { label: "Sinkronisasi stok real-time", included: true },
+      { label: "Coba gratis 7 hari", included: true },
       { label: "Custom workflow", included: false },
     ],
     cta: "Mulai Standard →",
@@ -277,16 +251,20 @@ export const PLANS: Plan[] = [
   {
     name: "Premium",
     desc: "Solusi lengkap untuk operasional kompleks.",
-    priceMonthly: "Rp 1,2jt",
-    priceYearly: "Rp 960rb",
-    setup: "Setup Rp 1.000.000",
+    priceMonthly: "Rp 999rb",
+    priceYearly: "Rp 799rb",
+    priceYearlyTotal: "Rp 9.588.000",
+    priceYearlySave: "Rp 2.400.000",
+    setup: "Setup Rp 699.000",
     features: [
       { label: "Semua fitur Standard", included: true },
-      { label: "Unlimited invoice", included: true },
-      { label: "Multi-marketplace", included: true },
-      { label: "Custom workflow", included: true },
+      { label: "Deteksi intent & eskalasi lanjutan", included: true },
+      { label: "Multi-nomor WhatsApp Business", included: true },
+      { label: "Custom workflow & integrasi", included: true },
       { label: "Dedicated account manager", included: true },
-      { label: "SLA respons 1 jam", included: true },
+      { label: "Laporan mingguan lengkap", included: true },
+      { label: "Monitoring komplain otomatis", included: true },
+      { label: "Coba gratis 7 hari", included: true },
     ],
     cta: "Mulai Premium →",
     waMessage: WA_MESSAGES.premium,
@@ -304,16 +282,17 @@ export interface ComparisonRow {
 export const COMPARISON_TIERS = ["Starter", "Standard", "Premium"] as const;
 
 export const COMPARISON_ROWS: ComparisonRow[] = [
-  { feature: "Bot WhatsApp", values: ["Dasar", "AI Assistant", "AI Assistant"] },
-  { feature: "Auto-reply", values: ["500 / bulan", "Unlimited", "Unlimited"] },
-  { feature: "Invoice", values: ["50 / bulan", "500 / bulan", "Unlimited"] },
-  { feature: "Marketplace", values: ["1 platform", "2 channel", "Multi-marketplace"] },
-  { feature: "Sinkronisasi stok real-time", values: [false, true, true] },
+  { feature: "AI WhatsApp Assistant", values: ["Dasar", "Full", "Full"] },
+  { feature: "Percakapan / bulan", values: ["Unlimited", "Unlimited", "Unlimited"] },
+  { feature: "Deteksi & notif lead panas", values: [false, true, true] },
+  { feature: "Daily business briefing", values: [false, true, true] },
+  { feature: "Nomor WhatsApp Business", values: ["1", "1", "Multi"] },
+  { feature: "Deteksi intent & eskalasi", values: ["Dasar", "Standar", "Lanjutan"] },
   { feature: "Custom workflow", values: [false, false, true] },
-  { feature: "Support", values: ["Email", "WA prioritas", "WA prioritas"] },
+  { feature: "Support", values: ["WA prioritas", "WA prioritas", "WA prioritas 24 jam"] },
   { feature: "Dedicated account manager", values: [false, false, true] },
-  { feature: "SLA respons 1 jam", values: [false, false, true] },
-  { feature: "Biaya setup", values: ["Gratis", "Rp 500.000", "Rp 1.000.000"] },
+  { feature: "Monitoring komplain otomatis", values: [false, false, true] },
+  { feature: "Biaya setup", values: ["Gratis", "Rp 299.000", "Rp 699.000"] },
 ];
 
 /* -------------------------------- FAQ --------------------------------- */
@@ -329,11 +308,11 @@ export const FAQS: Faq[] = [
   },
   {
     q: "Berapa lama proses setup hingga sistem aktif?",
-    a: "Rata-rata 14 hari kerja, tergantung kompleksitas integrasi. Paket Premium dengan custom workflow bisa sampai 30 hari.",
+    a: "Starter selesai dalam 1 hari kerja. Standard 2-3 hari kerja. Premium 5-7 hari kerja tergantung kompleksitas custom workflow yang diminta.",
   },
   {
     q: "Platform apa saja yang bisa diintegrasikan?",
-    a: "WhatsApp Business, Tokopedia, Shopee, TikTok Shop, Midtrans, Xendit, Google Sheets, Moka POS, Jurnal, dan banyak lainnya.",
+    a: "WhatsApp Business, Tokopedia, Shopee, TikTok Shop, dan Google Sheets. Integrasi lainnya tersedia untuk paket Premium sesuai kebutuhan bisnis.",
   },
   {
     q: "Apakah bot WhatsApp terlihat seperti manusia?",
@@ -345,11 +324,11 @@ export const FAQS: Faq[] = [
   },
   {
     q: "Apakah data bisnis saya aman?",
-    a: "Data dienkripsi standar AES-256, server di Indonesia, tidak pernah dijual atau dibagikan ke pihak ketiga.",
+    a: "Data percakapan kamu hanya digunakan untuk menjalankan sistem Nexflow dan tidak pernah dijual atau dibagikan ke pihak manapun. Kami menggunakan layanan cloud terpercaya dengan standar keamanan tinggi.",
   },
   {
     q: "Apakah ada masa percobaan gratis?",
-    a: "Konsultasi gratis dan demo sistem 14 hari untuk semua paket. Hubungi via WhatsApp untuk mulai.",
+    a: "Ya, semua paket bisa dicoba gratis selama 7 hari tanpa perlu bayar apapun. Hubungi kami via WhatsApp untuk mulai trial sekarang.",
   },
 ];
 
@@ -358,9 +337,9 @@ export const FOOTER_COLUMNS = [
   {
     title: "Layanan",
     links: [
-      { label: "AI WhatsApp Bot", href: "#layanan" },
-      { label: "Auto Invoice", href: "#layanan" },
-      { label: "Inventory Sync", href: "#layanan" },
+      { label: "AI WhatsApp Assistant", href: "#layanan" },
+      { label: "Lead Grading & Follow-up", href: "#layanan" },
+      { label: "Daily Business Briefing", href: "#layanan" },
     ],
   },
   {

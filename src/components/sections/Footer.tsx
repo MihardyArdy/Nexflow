@@ -5,7 +5,7 @@ import { waLink, WA_DISPLAY } from "@/lib/constants";
 
 const SOCIALS = [
   { label: "WhatsApp", short: "WA", href: waLink(), external: true },
-  { label: "Instagram", short: "IG", href: "#", external: false },
+  { label: "Instagram", short: "IG", href: "https://instagram.com/nexflow.ai_automation", external: true },
   { label: "LinkedIn", short: "LI", href: "#", external: false },
 ];
 
@@ -19,8 +19,8 @@ export function Footer() {
               <Logo />
             </a>
             <p className="mt-4 max-w-[280px] text-[13px] leading-relaxed text-fg-muted">
-              Platform otomatisasi operasional untuk UMKM Indonesia. Dari
-              WhatsApp bot, invoice, hingga inventory.
+              Spesialis AI WhatsApp Assistant untuk UMKM Indonesia. Dari balas
+              pesan, follow-up prospek, hingga laporan bisnis harian.
             </p>
             <div className="mt-5 flex gap-2">
               {SOCIALS.map((s) => (
@@ -72,10 +72,10 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:halo@nexflow.id"
+                  href="mailto:nexflow.hq@gmail.com"
                   className="text-[13px] text-fg-muted transition-colors duration-200 hover:text-fg"
                 >
-                  halo@nexflow.id
+                  nexflow.hq@gmail.com
                 </a>
               </li>
               <li>

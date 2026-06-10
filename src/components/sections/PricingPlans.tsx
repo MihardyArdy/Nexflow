@@ -8,7 +8,7 @@ import { waLink } from "@/lib/constants";
 import { buttonClass } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 
-/** Billing toggle + the three plan cards (Standard emphasised). */
+/** Monthly/yearly price toggle + the three plan cards (Standard emphasised). */
 export function PricingPlans() {
   const [yearly, setYearly] = useState(false);
 
@@ -58,7 +58,7 @@ export function PricingPlans() {
                 "relative flex h-full flex-col rounded-2xl border p-6 transition-all duration-300 ease-premium",
                 plan.featured
                   ? "border-accent/60 bg-bg-2 shadow-glow-lg lg:z-10 lg:scale-[1.05]"
-                  : "border-border bg-bg-2/80 shadow-card hover:-translate-y-1 hover:border-border-2 hover:shadow-card-hover"
+                  : "border-border bg-bg-2/80 shadow-card will-change-transform hover:-translate-y-1 hover:border-border-2 hover:shadow-card-hover"
               )}
             >
               {plan.featured && (
@@ -76,11 +76,28 @@ export function PricingPlans() {
               <h3 className="text-[18px] font-bold text-fg">{plan.name}</h3>
               <p className="mt-1 text-[13px] text-fg-muted">{plan.desc}</p>
 
-              <div className="mt-5 flex items-baseline gap-1.5">
-                <span className="font-display text-4xl font-extrabold tracking-tightest text-fg">
-                  {yearly ? plan.priceYearly : plan.priceMonthly}
-                </span>
-                <span className="text-[13px] text-fg-muted">/ bulan</span>
+              <div className="mt-5">
+                {yearly && (
+                  <span className="block text-[13px] font-medium text-fg-subtle line-through">
+                    {plan.priceMonthly}
+                  </span>
+                )}
+                <div className="flex items-baseline gap-1.5">
+                  <span className="font-display text-4xl font-extrabold tracking-tightest text-fg">
+                    {yearly ? plan.priceYearly : plan.priceMonthly}
+                  </span>
+                  <span className="text-[13px] text-fg-muted">/ bulan</span>
+                </div>
+                {yearly && (
+                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                    <span className="text-xs text-fg-subtle">
+                      dibayar {plan.priceYearlyTotal}/tahun
+                    </span>
+                    <span className="rounded-full bg-accent/15 px-2 py-0.5 font-mono text-[10px] font-bold text-accent">
+                      Hemat {plan.priceYearlySave}/tahun
+                    </span>
+                  </div>
+                )}
               </div>
               <p className="mt-2 border-b border-border pb-5 font-mono text-xs text-fg-subtle">
                 {plan.setup}

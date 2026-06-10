@@ -66,41 +66,25 @@ const config: Config = {
       },
       animation: {
         marquee: "marquee 45s linear infinite",
-        "fade-up": "fadeUp 0.6s cubic-bezier(0.22,0.61,0.36,1) forwards",
-        shimmer: "shimmer 6s linear infinite",
+        "fade-up": "fadeUp 0.5s cubic-bezier(0.22,0.61,0.36,1) forwards",
         "typing-1": "typingBounce 1.2s ease-in-out 0s infinite",
         "typing-2": "typingBounce 1.2s ease-in-out 0.2s infinite",
         "typing-3": "typingBounce 1.2s ease-in-out 0.4s infinite",
-        "bubble-in": "bubbleIn 0.45s cubic-bezier(0.22,0.61,0.36,1) forwards",
-        float: "floatY 7s ease-in-out infinite",
-        "pulse-soft": "pulseSoft 2.4s ease-in-out infinite",
-        "spin-slow": "spin 22s linear infinite",
+        "bubble-in": "bubbleIn 0.4s cubic-bezier(0.22,0.61,0.36,1) forwards",
       },
       keyframes: {
         marquee: { to: { transform: "translateX(-50%)" } },
         fadeUp: {
-          from: { opacity: "0", transform: "translateY(20px)" },
+          from: { opacity: "0", transform: "translateY(14px)" },
           to: { opacity: "1", transform: "translateY(0)" },
-        },
-        shimmer: {
-          from: { backgroundPosition: "200% center" },
-          to: { backgroundPosition: "-200% center" },
         },
         typingBounce: {
           "0%,60%,100%": { transform: "translateY(0)", opacity: "0.4" },
           "30%": { transform: "translateY(-4px)", opacity: "1" },
         },
         bubbleIn: {
-          from: { opacity: "0", transform: "translateY(10px) scale(0.97)" },
+          from: { opacity: "0", transform: "translateY(8px) scale(0.98)" },
           to: { opacity: "1", transform: "translateY(0) scale(1)" },
-        },
-        floatY: {
-          "0%,100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        pulseSoft: {
-          "0%,100%": { opacity: "1" },
-          "50%": { opacity: "0.45" },
         },
       },
       backgroundImage: {

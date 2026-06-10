@@ -13,9 +13,8 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
         aria-hidden
       >
-        <div className="absolute inset-0 bg-grid mask-radial opacity-70" />
-        <div className="absolute left-1/2 top-[-15%] h-[620px] w-[820px] -translate-x-1/2 rounded-full bg-accent/15 blur-[130px]" />
-        <div className="absolute right-[6%] top-[18%] h-[320px] w-[320px] rounded-full bg-indigo/15 blur-[110px]" />
+        <div className="absolute inset-0 bg-grid opacity-50" />
+        <div className="absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-accent/8 blur-[100px]" />
       </div>
 
       <Container>
@@ -42,9 +41,9 @@ export function Hero() {
 
             <Reveal delay={150}>
               <p className="mt-5 max-w-[480px] text-pretty text-[15px] leading-relaxed text-fg-muted sm:text-[17px]">
-                Tinggalkan rutinitas repetitif. Nexflow mengotomatisasi
-                operasional UMKM Anda — dari bot WhatsApp, auto-invoice, hingga
-                sinkronisasi stok.
+                Tinggalkan rutinitas balas chat manual. AI WhatsApp Assistant
+                Nexflow bekerja 24/7 — dari balas pesan & follow-up prospek,
+                hingga laporan bisnis harian.
               </p>
             </Reveal>
 
@@ -69,34 +68,10 @@ export function Hero() {
                 </a>
               </div>
             </Reveal>
-
-            <Reveal delay={300}>
-              <div className="mt-7 flex items-center gap-3 text-[13px] text-fg-muted">
-                <div className="flex -space-x-2">
-                  {["A", "B", "C", "D"].map((x) => (
-                    <span
-                      key={x}
-                      className="grid h-7 w-7 place-items-center rounded-full border-2 border-bg bg-bg-3 text-[10px] font-bold text-accent"
-                    >
-                      {x}
-                    </span>
-                  ))}
-                </div>
-                <span>
-                  Dipercaya{" "}
-                  <strong className="font-semibold text-fg">10+ UMKM</strong> di
-                  Indonesia
-                </span>
-              </div>
-            </Reveal>
           </div>
 
           {/* chat mockup */}
           <Reveal delay={200} className="relative">
-            <div
-              className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-accent/10 blur-3xl"
-              aria-hidden
-            />
             <ChatMockup />
           </Reveal>
         </div>
