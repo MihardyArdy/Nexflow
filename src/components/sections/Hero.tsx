@@ -14,8 +14,8 @@ export function Hero() {
         aria-hidden
       >
         <div className="absolute inset-0 bg-grid mask-radial opacity-50" />
-        <div className="absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-accent/10 blur-[100px]" />
-        <div className="drift-y absolute -right-20 top-40 h-[320px] w-[420px] rounded-full bg-indigo/10 blur-[120px]" />
+        <div className="absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2 bg-[radial-gradient(closest-side,rgba(16,185,129,0.18),transparent)]" />
+        <div className="drift-y absolute -right-20 top-40 h-[320px] w-[420px] bg-[radial-gradient(closest-side,rgba(99,102,241,0.16),transparent)]" />
       </div>
 
       <Container>

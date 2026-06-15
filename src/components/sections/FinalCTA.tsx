@@ -12,7 +12,7 @@ export function FinalCTA() {
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl border border-border-2 bg-bg-2 px-6 py-[clamp(2.5rem,7vw,4.5rem)] text-center shadow-card">
             <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
-              <div className="absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-accent/20 blur-[120px]" />
+              <div className="absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/3 bg-[radial-gradient(closest-side,rgba(16,185,129,0.28),transparent)]" />
               <div className="absolute inset-0 bg-grid mask-radial opacity-50" />
             </div>
             <div className="mx-auto flex max-w-xl flex-col items-center">

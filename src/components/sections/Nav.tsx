@@ -55,7 +55,7 @@ export function Nav() {
       className={cn(
         "sticky top-0 z-50 border-b transition-colors duration-300 ease-premium",
         scrolled
-          ? "border-border bg-bg/80 backdrop-blur-xl"
+          ? "border-border bg-bg/85 backdrop-blur-md"
           : "border-transparent bg-transparent"
       )}
     >

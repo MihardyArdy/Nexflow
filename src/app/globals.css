@@ -161,6 +161,8 @@ body::after {
   opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
+  /* own compositor layer → never repaints during scroll */
+  transform: translateZ(0);
 }
 
 /* ------------------------------- 3D logo --------------------------------- */
@@ -261,6 +263,20 @@ section.bg-bg-2 {
 @keyframes driftY {
   to {
     transform: translateY(48px);
+  }
+}
+
+/* Reading-progress bar: scaleX driven by page scroll, compositor-only (no JS).
+   Unsupported browsers keep the bar at scale-x-0 (hidden) — purely decorative. */
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: scrollProgress linear both;
+    animation-timeline: scroll(root);
+  }
+}
+@keyframes scrollProgress {
+  to {
+    transform: scaleX(1);
   }
 }
 

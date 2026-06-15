@@ -19,7 +19,7 @@ export function Card({
       className={cn(
         "group relative rounded-2xl border border-border bg-bg-2/80 p-6 shadow-card transition-all duration-300 ease-premium",
         hover &&
-          "will-change-transform hover:-translate-y-1 hover:border-border-2 hover:shadow-card-hover",
+          "hover:-translate-y-1 hover:border-border-2 hover:shadow-card-hover",
         className
       )}
       {...props}

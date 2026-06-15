@@ -27,7 +27,7 @@ export function Services() {
               className="group/card relative overflow-hidden border-accent/20"
             >
               <div
-                className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-accent/8 opacity-0 blur-3xl transition-opacity duration-500 group-hover/card:opacity-100"
+                className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 bg-[radial-gradient(closest-side,rgba(16,185,129,0.16),transparent)] opacity-0 transition-opacity duration-500 group-hover/card:opacity-100"
                 aria-hidden
               />
               <div className="flex items-start justify-between mb-5">
@@ -74,7 +74,7 @@ export function Services() {
                     className="group/card relative h-full overflow-hidden"
                   >
                     <div
-                      className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-accent/10 opacity-0 blur-2xl transition-opacity duration-300 group-hover/card:opacity-100"
+                      className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 bg-[radial-gradient(closest-side,rgba(16,185,129,0.18),transparent)] opacity-0 transition-opacity duration-300 group-hover/card:opacity-100"
                       aria-hidden
                     />
                     <div className="mb-4 flex items-start gap-3">

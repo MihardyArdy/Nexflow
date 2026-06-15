@@ -32,7 +32,7 @@ export function Testimonials() {
           <div className="edge-glow relative overflow-hidden rounded-3xl border border-accent/25 bg-bg-3/60 p-6 shadow-card sm:p-9">
             {/* ambient corner glow */}
             <div
-              className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-accent/10 blur-3xl"
+              className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 bg-[radial-gradient(closest-side,rgba(16,185,129,0.16),transparent)]"
               aria-hidden
             />
             <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-12">
