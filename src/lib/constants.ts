@@ -1,3 +1,9 @@
+/** Production site URL — used for metadataBase, OG tags, sitemap & JSON-LD.
+ *  Override per-environment with NEXT_PUBLIC_SITE_URL (set this to your real
+ *  domain on Vercel). Falls back to the brand domain placeholder. */
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://nexflow.id";
+
 /** Single source of truth for the WhatsApp contact + prefilled messages. */
 export const WA_NUMBER = "62882001602406";
 

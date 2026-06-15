@@ -57,7 +57,7 @@ export function PricingPlans() {
               className={cn(
                 "relative flex h-full flex-col rounded-2xl border p-6 transition-all duration-300 ease-premium",
                 plan.featured
-                  ? "border-accent/60 bg-bg-2 shadow-glow-lg lg:z-10 lg:scale-[1.05]"
+                  ? "edge-glow border-accent/60 bg-bg-2 shadow-glow-lg lg:z-10 lg:scale-[1.05]"
                   : "border-border bg-bg-2/80 shadow-card will-change-transform hover:-translate-y-1 hover:border-border-2 hover:shadow-card-hover"
               )}
             >

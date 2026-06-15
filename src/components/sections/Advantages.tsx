@@ -12,7 +12,7 @@ export function Advantages() {
         <SectionHeading
           eyebrow="Keunggulan"
           title="Kenapa Pilih Nexflow?"
-          desc="Bukan sekadar tools — kami adalah mitra pertumbuhan bisnis Anda."
+          desc="Bukan sekadar tools — kami adalah mitra pertumbuhan bisnis kamu."
         />
         <div className="grid gap-4 sm:grid-cols-2">
           {ADVANTAGES.map((a, i) => {

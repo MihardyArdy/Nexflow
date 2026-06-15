@@ -11,12 +11,30 @@ import { Logo } from "@/components/ui/Logo";
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Scroll-spy: highlight the nav link whose section crosses the viewport
+  // middle. One observer, no scroll handler — cheap.
+  useEffect(() => {
+    const els = NAV_LINKS.map((l) =>
+      document.getElementById(l.href.slice(1))
+    ).filter((el): el is HTMLElement => el !== null);
+    if (!els.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) setActive(e.target.id);
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
   }, []);
 
   useEffect(() => {
@@ -55,15 +73,22 @@ export function Nav() {
           className="hidden items-center gap-1 lg:flex"
           aria-label="Navigasi utama"
         >
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="rounded-full px-3.5 py-2 text-[13.5px] text-fg-muted transition-colors duration-200 hover:bg-bg-3 hover:text-fg"
-            >
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = active === link.href.slice(1);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "true" : undefined}
+                className={cn(
+                  "rounded-full px-3.5 py-2 text-[13.5px] transition-colors duration-200 hover:bg-bg-3 hover:text-fg",
+                  isActive ? "bg-bg-3 text-fg" : "text-fg-muted"
+                )}
+              >
+                {link.label}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="hidden lg:flex">

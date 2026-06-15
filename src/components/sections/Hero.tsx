@@ -13,8 +13,9 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
         aria-hidden
       >
-        <div className="absolute inset-0 bg-grid opacity-50" />
-        <div className="absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-accent/8 blur-[100px]" />
+        <div className="absolute inset-0 bg-grid mask-radial opacity-50" />
+        <div className="absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-accent/10 blur-[100px]" />
+        <div className="absolute -right-20 top-40 h-[320px] w-[420px] rounded-full bg-indigo/10 blur-[120px]" />
       </div>
 
       <Container>

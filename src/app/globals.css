@@ -108,6 +108,59 @@
   .pause-hover:hover {
     animation-play-state: paused;
   }
+
+  /* Animated conic "premium" border. A masked 1px ring with a slowly rotating
+     emerald arc — works on top of any background, GPU-composited, mobile-safe.
+     Reduced motion freezes the arc (handled below). */
+  .edge-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from var(--border-angle, 0deg),
+      transparent 0%,
+      transparent 58%,
+      theme("colors.accent.2") 76%,
+      theme("colors.accent.DEFAULT") 84%,
+      transparent 100%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderSpin 8s linear infinite;
+    pointer-events: none;
+  }
+}
+
+/* Custom property so the conic angle can actually animate (smooth in all
+   current evergreen browsers; degrades to a static arc otherwise). */
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes borderSpin {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+/* Ultra-fine film grain over the whole page — turns flat dark panels into a
+   richer, "shot on film" surface. One fixed GPU layer, ~3% opacity, no blend
+   mode (cheap). Sits below the navbar/overlays, above page content. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
 }
 
 /* ----------------------------- Scroll reveal ----------------------------- */

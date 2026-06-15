@@ -25,7 +25,7 @@ export function buttonClass({
     size === "lg" ? "px-7 py-3.5 text-[15px]" : "px-5 py-2.5 text-sm",
     full && "w-full",
     variant === "primary" &&
-      "bg-accent text-black shadow-glow will-change-transform hover:bg-accent-2 hover:-translate-y-0.5 hover:shadow-glow-lg active:translate-y-0",
+      "relative overflow-hidden bg-gradient-to-b from-accent-2 to-accent text-black shadow-glow will-change-transform hover:-translate-y-0.5 hover:from-accent-2 hover:to-accent-2 hover:shadow-glow-lg active:translate-y-0 after:pointer-events-none after:absolute after:inset-0 after:-translate-x-full after:skew-x-[-20deg] after:bg-gradient-to-r after:from-transparent after:via-white/35 after:to-transparent after:transition-transform after:duration-700 after:ease-out after:content-[''] hover:after:translate-x-full",
     variant === "ghost" &&
       "border border-border-2 text-fg will-change-transform hover:-translate-y-0.5 hover:border-[#3a3a3a] hover:bg-white/[0.04] active:translate-y-0",
     className

@@ -33,6 +33,9 @@ export function Brands() {
       aria-label="Integrasi platform"
       className="border-y border-border bg-bg-2 py-9"
     >
+      <p className="mb-7 px-5 text-center font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-fg-subtle">
+        Terhubung dengan platform yang sudah kamu pakai
+      </p>
       <div className="group relative overflow-hidden mask-fade-x">
         <ul className="flex w-max will-change-transform animate-marquee items-center gap-20 group-hover:[animation-play-state:paused]">
           {items.map((brand, i) => {

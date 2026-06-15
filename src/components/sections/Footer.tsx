@@ -6,7 +6,6 @@ import { waLink, WA_DISPLAY } from "@/lib/constants";
 const SOCIALS = [
   { label: "WhatsApp", short: "WA", href: waLink(), external: true },
   { label: "Instagram", short: "IG", href: "https://instagram.com/nexflow.ai_automation", external: true },
-  { label: "LinkedIn", short: "LI", href: "#", external: false },
 ];
 
 export function Footer() {
@@ -90,10 +89,16 @@ export function Footer() {
         <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-xs text-fg-subtle sm:flex-row sm:items-center sm:justify-between">
           <span>© 2026 Nexflow. Semua hak dilindungi.</span>
           <div className="flex gap-5">
-            <a href="#" className="transition-colors duration-200 hover:text-fg">
+            <a
+              href="/privacy"
+              className="transition-colors duration-200 hover:text-fg"
+            >
               Privacy
             </a>
-            <a href="#" className="transition-colors duration-200 hover:text-fg">
+            <a
+              href="/terms"
+              className="transition-colors duration-200 hover:text-fg"
+            >
               Terms
             </a>
           </div>

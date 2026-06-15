@@ -6,6 +6,9 @@ import {
   JetBrains_Mono,
 } from "next/font/google";
 import "./globals.css";
+import { JsonLd } from "@/components/JsonLd";
+import { organizationSchema, websiteSchema } from "@/lib/jsonld";
+import { SITE_URL } from "@/lib/constants";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -37,12 +40,12 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Nexflow — Otomatisasi UMKM",
   description:
     "Spesialis AI WhatsApp Assistant untuk UMKM Indonesia. Balas pesan 24/7, lead follow-up otomatis, dan laporan bisnis harian.",
-  icons: {
-    icon: "/nexflow-logo.webp",
-    apple: "/nexflow-logo.webp",
+  alternates: {
+    canonical: "/",
   },
   openGraph: {
     title: "Nexflow — Otomatisasi UMKM",
@@ -51,6 +54,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "id_ID",
     siteName: "Nexflow",
+    url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
@@ -72,6 +76,8 @@ export default function RootLayout({
       <body
         className={`${bricolage.variable} ${jakarta.variable} ${instrument.variable} ${mono.variable} font-body`}
       >
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={websiteSchema} />
         {children}
       </body>
     </html>

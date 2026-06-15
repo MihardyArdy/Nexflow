@@ -10,8 +10,52 @@ import {
   Zap,
   Headset,
   TrendingUp,
+  Lock,
+  Rocket,
+  Handshake,
 } from "lucide-react";
 import { WA_MESSAGES } from "./constants";
+
+/* ------------------------------- Stats -------------------------------- */
+/** Capability numbers — factually true (what the system can do), not
+ *  customer-result claims. Safe to show pre-launch. */
+export interface Stat {
+  value: string;
+  label: string;
+}
+
+export const STATS: Stat[] = [
+  { value: "24/7", label: "Operasi nonstop" },
+  { value: "<3 dtk", label: "Waktu respons bot" },
+  { value: "8+", label: "Platform terintegrasi" },
+  { value: "7 hari", label: "Coba gratis" },
+];
+
+/* --------------------------- Founding client -------------------------- */
+/** Perks for the honest "be our first client" reframe of the proof section. */
+export interface FoundingPerk {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+}
+
+export const FOUNDING_PERKS: FoundingPerk[] = [
+  {
+    icon: Lock,
+    title: "Harga early-bird terkunci",
+    desc: "Tarif khusus klien pertama, terkunci selamanya — tidak ikut naik saat harga publik naik.",
+  },
+  {
+    icon: Rocket,
+    title: "Prioritas setup & onboarding",
+    desc: "Antrian setup paling depan. Sistem kamu kami bangun dan live duluan.",
+  },
+  {
+    icon: Handshake,
+    title: "Akses langsung ke founder",
+    desc: "Bukan tiket support. Kamu ngobrol langsung dengan tim yang membangun Nexflow.",
+  },
+];
 
 /* ----------------------------- Navigation ----------------------------- */
 export const NAV_LINKS = [
@@ -103,7 +147,7 @@ export const SERVICES: Service[] = [
     features: [
       "Auto-grade leads berdasarkan respons",
       "Notifikasi lead panas langsung ke owner",
-      "Notifikasi lead panas ke owner",
+      "Follow-up terjadwal otomatis sampai closing",
       "Tidak ada lead panas yang terlewat",
     ],
   },
@@ -164,19 +208,19 @@ export const STEPS: Step[] = [
     num: "01",
     day: "Hari 1",
     title: "Konsultasi Gratis",
-    desc: "Ceritakan kebutuhan bisnis Anda. Tim kami merancang solusi otomatisasi yang tepat sasaran.",
+    desc: "Ceritakan kebutuhan bisnis kamu. Tim kami merancang solusi otomatisasi yang tepat sasaran.",
   },
   {
     num: "02",
-    day: "Hari 1–3",
+    day: "Hari 2–3",
     title: "Setup & Integrasi",
-    desc: "Kami setup sistem, integrasi platform, dan konfigurasi bot. Anda tidak perlu menyentuh kode.",
+    desc: "Kami setup sistem, integrasi platform, dan konfigurasi bot. Kamu tidak perlu menyentuh kode.",
   },
   {
     num: "03",
-    day: "Hari 15+",
+    day: "Hari 4+",
     title: "Live & Pantau",
-    desc: "Sistem berjalan otomatis 24/7. Anda cukup pantau laporan di WhatsApp kamu dan fokus mengembangkan bisnis.",
+    desc: "Sistem berjalan otomatis 24/7. Kamu cukup pantau laporan di WhatsApp dan fokus mengembangkan bisnis.",
   },
 ];
 
@@ -304,7 +348,7 @@ export interface Faq {
 export const FAQS: Faq[] = [
   {
     q: "Apakah saya perlu paham teknologi untuk pakai Nexflow?",
-    a: "Tidak. Tim kami yang setup, training, dan handle integrasi. Anda hanya perlu cerita kebutuhan bisnis.",
+    a: "Tidak. Tim kami yang setup, training, dan handle integrasi. Kamu hanya perlu cerita kebutuhan bisnis.",
   },
   {
     q: "Berapa lama proses setup hingga sistem aktif?",
@@ -316,11 +360,11 @@ export const FAQS: Faq[] = [
   },
   {
     q: "Apakah bot WhatsApp terlihat seperti manusia?",
-    a: "Ya, AI dilatih dengan gaya bahasa bisnis Anda. Untuk pertanyaan kompleks, bot bisa otomatis eskalasi ke Anda.",
+    a: "Ya, AI dilatih dengan gaya bahasa bisnis kamu. Untuk pertanyaan kompleks, bot bisa otomatis eskalasi ke kamu.",
   },
   {
     q: "Bagaimana jika saya ingin berhenti berlangganan?",
-    a: "Tidak ada kontrak jangka panjang. Cancel kapan saja dengan pemberitahuan 30 hari. Data Anda dikembalikan dalam format yang bisa digunakan.",
+    a: "Tidak ada kontrak jangka panjang. Cancel kapan saja dengan pemberitahuan 30 hari. Data kamu dikembalikan dalam format yang bisa digunakan.",
   },
   {
     q: "Apakah data bisnis saya aman?",

@@ -1,7 +1,10 @@
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
+import { JsonLd } from "@/components/JsonLd";
+import { faqSchema } from "@/lib/jsonld";
 import { Nav } from "@/components/sections/Nav";
 import { Hero } from "@/components/sections/Hero";
+import { Stats } from "@/components/sections/Stats";
 import { Brands } from "@/components/sections/Brands";
 import { Problems } from "@/components/sections/Problems";
 import { Services } from "@/components/sections/Services";
@@ -16,10 +19,12 @@ import { Footer } from "@/components/sections/Footer";
 export default function Home() {
   return (
     <>
+      <JsonLd data={faqSchema} />
       <ScrollProgress />
       <Nav />
       <main id="top">
         <Hero />
+        <Stats />
         <Brands />
         <Problems />
         <Services />
