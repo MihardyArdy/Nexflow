@@ -9,7 +9,7 @@ export function PricingTable() {
     <Reveal className="mt-14">
       <div className="overflow-hidden rounded-2xl border border-border bg-bg-2/60 shadow-card">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[600px] border-collapse text-left">
+          <table className="w-full min-w-[600px] border-collapse text-left tabular-nums">
             <caption className="sr-only">Perbandingan fitur tiap paket</caption>
             <thead>
               <tr className="border-b border-border">

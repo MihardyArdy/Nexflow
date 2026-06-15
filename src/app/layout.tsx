@@ -14,7 +14,8 @@ const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-bricolage",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  // Display/headings only use 600 (one card title), 700 (default), 800.
+  weight: ["600", "700", "800"],
 });
 
 const jakarta = Plus_Jakarta_Sans({
@@ -29,14 +30,16 @@ const instrument = Instrument_Serif({
   variable: "--font-instrument-serif",
   display: "swap",
   weight: "400",
-  style: ["normal", "italic"],
+  // Only ever used italic (the headline accent word).
+  style: ["italic"],
 });
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
-  weight: ["400", "500", "600"],
+  // 400 (plain), 600 (labels), 700 (bold numbers — was faux-bold before).
+  weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -76,6 +79,12 @@ export default function RootLayout({
       <body
         className={`${bricolage.variable} ${jakarta.variable} ${instrument.variable} ${mono.variable} font-body`}
       >
+        <a
+          href="#top"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-black focus:shadow-glow"
+        >
+          Lewati ke konten
+        </a>
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
         {children}

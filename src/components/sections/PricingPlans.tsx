@@ -78,12 +78,12 @@ export function PricingPlans() {
 
               <div className="mt-5">
                 {yearly && (
-                  <span className="block text-[13px] font-medium text-fg-subtle line-through">
+                  <span className="block text-[13px] font-medium tabular-nums text-fg-subtle line-through">
                     {plan.priceMonthly}
                   </span>
                 )}
                 <div className="flex items-baseline gap-1.5">
-                  <span className="font-display text-4xl font-extrabold tracking-tightest text-fg">
+                  <span className="font-display text-4xl font-extrabold tabular-nums tracking-tightest text-fg">
                     {yearly ? plan.priceYearly : plan.priceMonthly}
                   </span>
                   <span className="text-[13px] text-fg-muted">/ bulan</span>

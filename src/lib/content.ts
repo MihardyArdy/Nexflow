@@ -58,12 +58,14 @@ export const FOUNDING_PERKS: FoundingPerk[] = [
 ];
 
 /* ----------------------------- Navigation ----------------------------- */
+// Order must match the on-page section order (Testimoni renders before Harga),
+// so scroll-spy highlights and anchor jumps stay in sequence.
 export const NAV_LINKS = [
   { label: "Masalah", href: "#masalah" },
   { label: "Layanan", href: "#layanan" },
   { label: "Cara Kerja", href: "#cara" },
-  { label: "Harga", href: "#harga" },
   { label: "Testimoni", href: "#testi" },
+  { label: "Harga", href: "#harga" },
   { label: "FAQ", href: "#faq" },
 ] as const;
 

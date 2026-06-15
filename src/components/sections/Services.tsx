@@ -32,7 +32,7 @@ export function Services() {
               />
               <div className="flex items-start justify-between mb-5">
                 <div className="flex items-center gap-3">
-                  <div className="grid h-12 w-12 place-items-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
+                  <div className="grid h-12 w-12 place-items-center rounded-xl border border-accent/30 bg-accent/10 text-accent transition-transform duration-300 ease-premium group-hover:scale-110">
                     <MainIcon size={22} />
                   </div>
                   <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-accent">
@@ -78,7 +78,7 @@ export function Services() {
                       aria-hidden
                     />
                     <div className="mb-4 flex items-start gap-3">
-                      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-accent/30 bg-accent/10 text-accent">
+                      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-accent/30 bg-accent/10 text-accent transition-transform duration-300 ease-premium group-hover:scale-110">
                         <Icon size={18} />
                       </div>
                       <div>

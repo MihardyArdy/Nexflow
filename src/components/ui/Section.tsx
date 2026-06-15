@@ -10,7 +10,7 @@ export function Section({ alt, className, children, ...props }: SectionProps) {
   return (
     <section
       className={cn(
-        "relative py-[clamp(5rem,12vw,8.75rem)]",
+        "cv-auto relative py-[clamp(5rem,12vw,8.75rem)]",
         alt && "bg-bg-2",
         className
       )}

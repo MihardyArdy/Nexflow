@@ -20,7 +20,7 @@ export function Advantages() {
             return (
               <Reveal key={a.title} delay={i * 80} className="h-full">
                 <Card className="flex h-full items-start gap-4 bg-bg-3/60">
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
+                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-accent/30 bg-accent/10 text-accent transition-transform duration-300 ease-premium group-hover:scale-110">
                     <Icon size={18} />
                   </div>
                   <div>

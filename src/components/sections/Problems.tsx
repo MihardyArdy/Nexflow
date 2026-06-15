@@ -20,7 +20,7 @@ export function Problems() {
             return (
               <Reveal key={p.title} delay={i * 90} className="h-full">
                 <Card as="article" className="h-full bg-bg-3/60">
-                  <div className="mb-4 grid h-11 w-11 place-items-center rounded-xl border border-[#ef4444]/30 bg-[#ef4444]/10 text-[#f87171]">
+                  <div className="mb-4 grid h-11 w-11 place-items-center rounded-xl border border-[#ef4444]/30 bg-[#ef4444]/10 text-[#f87171] transition-transform duration-300 ease-premium group-hover:scale-110">
                     <Icon size={20} />
                   </div>
                   <h3 className="mb-2 text-[17px] font-bold text-fg">

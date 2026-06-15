@@ -30,7 +30,7 @@ export function LegalPage({
         </Container>
       </header>
 
-      <main className="bg-bg">
+      <main id="top" className="bg-bg">
         <Container className="py-[clamp(3rem,7vw,5.5rem)]">
           <article className="mx-auto max-w-[720px]">
             <Link
