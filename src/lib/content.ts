@@ -67,6 +67,7 @@ export const NAV_LINKS = [
   { label: "Testimoni", href: "#testi" },
   { label: "Harga", href: "#harga" },
   { label: "FAQ", href: "#faq" },
+  { label: "Demo", href: "#demo" },
 ] as const;
 
 /* ------------------------------- Hero --------------------------------- */

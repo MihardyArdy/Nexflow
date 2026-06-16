@@ -66,6 +66,11 @@ export const metadata: Metadata = {
     description:
       "Spesialis AI WhatsApp Assistant untuk UMKM Indonesia. Balas pesan 24/7, lead follow-up otomatis, dan laporan bisnis harian.",
   },
+  appleWebApp: {
+    capable: true,
+    title: "Nexflow",
+    statusBarStyle: "black-translucent",
+  },
 };
 
 export const viewport: Viewport = {

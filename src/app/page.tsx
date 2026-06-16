@@ -1,7 +1,7 @@
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { JsonLd } from "@/components/JsonLd";
-import { faqSchema } from "@/lib/jsonld";
+import { faqSchema, serviceSchema } from "@/lib/jsonld";
 import { Nav } from "@/components/sections/Nav";
 import { Hero } from "@/components/sections/Hero";
 import { Stats } from "@/components/sections/Stats";
@@ -22,6 +22,7 @@ export default function Home() {
   return (
     <>
       <JsonLd data={faqSchema} />
+      <JsonLd data={serviceSchema} />
       <ScrollProgress />
       <Nav />
       <main id="top">

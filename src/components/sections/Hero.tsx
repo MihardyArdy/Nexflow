@@ -62,10 +62,10 @@ export function Hero() {
                   </span>
                 </a>
                 <a
-                  href="#layanan"
+                  href="#demo"
                   className={buttonClass({ variant: "ghost", size: "lg" })}
                 >
-                  Lihat Layanan
+                  Minta Demo Gratis
                 </a>
               </div>
             </Reveal>
