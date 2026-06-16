@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/JsonLd";
+import { Analytics } from "@/components/Analytics";
 import { organizationSchema, websiteSchema } from "@/lib/jsonld";
 import { SITE_URL } from "@/lib/constants";
 
@@ -88,6 +89,7 @@ export default function RootLayout({
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
         {children}
+        <Analytics />
       </body>
     </html>
   );
