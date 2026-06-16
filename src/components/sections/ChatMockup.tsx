@@ -37,7 +37,7 @@ function TypingBubble() {
   );
 }
 
-/** Keyword-based auto-reply — a believable demo with zero backend. */
+/** Keyword-based auto-reply — instant, zero network, fully client-side. */
 function botReply(text: string): string {
   const t = text.toLowerCase();
   if (/(halo|hai|hi|pagi|siang|sore|malam|assalam)/.test(t))
@@ -52,26 +52,22 @@ function botReply(text: string): string {
     return "Untuk ongkir, boleh share kota tujuannya kak? Saya cek estimasinya 🚚";
   if (/(bayar|transfer|cod|qris|ewallet|e-wallet)/.test(t))
     return "Bisa transfer bank, QRIS, atau e-wallet kak. Begitu lunas, langsung kami proses 🎉";
-  return "Noted kak! 🙏 Tim AI kami siap bantu 24/7. Boleh dijelaskan sedikit lagi kebutuhannya?";
+  return "Noted kak! 🙏 Tim kami siap bantu 24/7. Boleh dijelaskan sedikit lagi kebutuhannya?";
 }
 
-/** Max visitor messages per session — caps cost on the public AI endpoint. */
-const MAX_USER_MSGS = 6;
-
 /**
- * WhatsApp demo that auto-plays a scripted conversation, then becomes a real
- * AI chat (Naya via /api/chat → Groq). Auto-play stops on first send. Every
- * visitor message hits the AI; on any failure it falls back to a scripted
- * reply, and the session is capped to keep the public endpoint cheap.
+ * WhatsApp demo: auto-plays a scripted conversation, then becomes a try-it
+ * chat — type a message and get an instant keyword reply. Fully client-side
+ * (no network, no AI), so it stays light and snappy. Auto-play stops on the
+ * first visitor message.
  */
 export function ChatMockup() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [typing, setTyping] = useState(false);
   const [live, setLive] = useState(false); // visitor has taken over
-  const [capped, setCapped] = useState(false);
   const [input, setInput] = useState("");
   const bodyRef = useRef<HTMLDivElement>(null);
-  const sentRef = useRef(0);
+  const replyTimer = useRef<number | undefined>(undefined);
 
   // Auto-play the scripted preview until the visitor interacts.
   useEffect(() => {
@@ -119,56 +115,23 @@ export function ChatMockup() {
     bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight });
   }, [messages, typing]);
 
-  async function handleSend(e: React.FormEvent) {
+  useEffect(() => () => clearTimeout(replyTimer.current), []);
+
+  function handleSend(e: React.FormEvent) {
     e.preventDefault();
     const text = input.trim();
-    if (!text || typing || capped) return;
+    if (!text || typing) return;
     if (!live) track("demo_used");
 
-    const history: ChatMessage[] = (live ? messages : []).concat({
-      side: "in",
-      text,
-    });
+    const base = live ? messages : [];
     setLive(true);
-    setMessages(history);
+    setMessages([...base, { side: "in", text }]);
     setInput("");
     setTyping(true);
-
-    const next = sentRef.current + 1;
-    sentRef.current = next;
-
-    let reply = "";
-    try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: history.map((m) => ({
-            role: m.side === "in" ? "user" : "assistant",
-            content: m.text,
-          })),
-        }),
-      });
-      const data = await res.json();
-      reply = data?.reply || "";
-    } catch {
-      reply = "";
-    }
-    if (!reply) reply = botReply(text); // graceful fallback
-
-    const limitReached = next >= MAX_USER_MSGS;
-    setTyping(false);
-    setMessages((m) => {
-      const out: ChatMessage[] = [...m, { side: "out", text: reply }];
-      if (limitReached) {
-        out.push({
-          side: "out",
-          text: "Seru ngobrolnya kak! 😊 Untuk lanjut & coba versi lengkapnya, yuk chat tim kami langsung via WhatsApp 🙏",
-        });
-      }
-      return out;
-    });
-    if (limitReached) setCapped(true);
+    replyTimer.current = window.setTimeout(() => {
+      setTyping(false);
+      setMessages((m) => [...m, { side: "out", text: botReply(text) }]);
+    }, 800);
   }
 
   return (
@@ -179,12 +142,10 @@ export function ChatMockup() {
           N
         </div>
         <div>
-          <div className="text-[13.5px] font-semibold text-fg">
-            Naya · Nexflow
-          </div>
+          <div className="text-[13.5px] font-semibold text-fg">Nexflow Bot</div>
           <div className="mt-0.5 flex items-center gap-1.5 text-[11px] text-accent">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            AI Assistant · Online
+            Online
           </div>
         </div>
       </div>
@@ -211,19 +172,14 @@ export function ChatMockup() {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          disabled={capped}
-          placeholder={
-            capped
-              ? "Lanjut ngobrol via WhatsApp 🙏"
-              : "Ketik pesan untuk coba Naya…"
-          }
-          aria-label="Ketik pesan demo ke Naya"
+          placeholder="Ketik pesan untuk coba sendiri…"
+          aria-label="Ketik pesan demo ke bot"
           maxLength={120}
-          className="flex-1 bg-transparent px-2 text-[12.5px] text-fg placeholder:text-fg-subtle outline-none disabled:opacity-60"
+          className="flex-1 bg-transparent px-2 text-[12.5px] text-fg placeholder:text-fg-subtle outline-none"
         />
         <button
           type="submit"
-          disabled={typing || capped}
+          disabled={typing}
           aria-label="Kirim pesan"
           className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent text-black transition-transform duration-200 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:hover:scale-100"
         >
