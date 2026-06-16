@@ -55,18 +55,23 @@ function botReply(text: string): string {
   return "Noted kak! 🙏 Tim AI kami siap bantu 24/7. Boleh dijelaskan sedikit lagi kebutuhannya?";
 }
 
+/** Max visitor messages per session — caps cost on the public AI endpoint. */
+const MAX_USER_MSGS = 6;
+
 /**
  * WhatsApp demo that auto-plays a scripted conversation, then becomes a real
- * try-it chat: type a message and the bot replies (client-side keyword script,
- * no backend). Auto-play stops the moment the visitor sends a message.
+ * AI chat (Naya via /api/chat → Groq). Auto-play stops on first send. Every
+ * visitor message hits the AI; on any failure it falls back to a scripted
+ * reply, and the session is capped to keep the public endpoint cheap.
  */
 export function ChatMockup() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [typing, setTyping] = useState(false);
   const [live, setLive] = useState(false); // visitor has taken over
+  const [capped, setCapped] = useState(false);
   const [input, setInput] = useState("");
   const bodyRef = useRef<HTMLDivElement>(null);
-  const replyTimer = useRef<number | undefined>(undefined);
+  const sentRef = useRef(0);
 
   // Auto-play the scripted preview until the visitor interacts.
   useEffect(() => {
@@ -114,22 +119,56 @@ export function ChatMockup() {
     bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight });
   }, [messages, typing]);
 
-  useEffect(() => () => clearTimeout(replyTimer.current), []);
-
-  function handleSend(e: React.FormEvent) {
+  async function handleSend(e: React.FormEvent) {
     e.preventDefault();
     const text = input.trim();
-    if (!text) return;
+    if (!text || typing || capped) return;
     if (!live) track("demo_used");
-    const base = live ? messages : [];
+
+    const history: ChatMessage[] = (live ? messages : []).concat({
+      side: "in",
+      text,
+    });
     setLive(true);
-    setMessages([...base, { side: "in", text }]);
+    setMessages(history);
     setInput("");
     setTyping(true);
-    replyTimer.current = window.setTimeout(() => {
-      setTyping(false);
-      setMessages((m) => [...m, { side: "out", text: botReply(text) }]);
-    }, 900);
+
+    const next = sentRef.current + 1;
+    sentRef.current = next;
+
+    let reply = "";
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: history.map((m) => ({
+            role: m.side === "in" ? "user" : "assistant",
+            content: m.text,
+          })),
+        }),
+      });
+      const data = await res.json();
+      reply = data?.reply || "";
+    } catch {
+      reply = "";
+    }
+    if (!reply) reply = botReply(text); // graceful fallback
+
+    const limitReached = next >= MAX_USER_MSGS;
+    setTyping(false);
+    setMessages((m) => {
+      const out: ChatMessage[] = [...m, { side: "out", text: reply }];
+      if (limitReached) {
+        out.push({
+          side: "out",
+          text: "Seru ngobrolnya kak! 😊 Untuk lanjut & coba versi lengkapnya, yuk chat tim kami langsung via WhatsApp 🙏",
+        });
+      }
+      return out;
+    });
+    if (limitReached) setCapped(true);
   }
 
   return (
@@ -140,10 +179,12 @@ export function ChatMockup() {
           N
         </div>
         <div>
-          <div className="text-[13.5px] font-semibold text-fg">Nexflow Bot</div>
+          <div className="text-[13.5px] font-semibold text-fg">
+            Naya · Nexflow
+          </div>
           <div className="mt-0.5 flex items-center gap-1.5 text-[11px] text-accent">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            Online
+            AI Assistant · Online
           </div>
         </div>
       </div>
@@ -170,15 +211,21 @@ export function ChatMockup() {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ketik pesan untuk coba sendiri…"
-          aria-label="Ketik pesan demo ke bot"
+          disabled={capped}
+          placeholder={
+            capped
+              ? "Lanjut ngobrol via WhatsApp 🙏"
+              : "Ketik pesan untuk coba Naya…"
+          }
+          aria-label="Ketik pesan demo ke Naya"
           maxLength={120}
-          className="flex-1 bg-transparent px-2 text-[12.5px] text-fg placeholder:text-fg-subtle outline-none"
+          className="flex-1 bg-transparent px-2 text-[12.5px] text-fg placeholder:text-fg-subtle outline-none disabled:opacity-60"
         />
         <button
           type="submit"
+          disabled={typing || capped}
           aria-label="Kirim pesan"
-          className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent text-black transition-transform duration-200 hover:scale-105 active:scale-95"
+          className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent text-black transition-transform duration-200 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:hover:scale-100"
         >
           <Send size={15} />
         </button>
