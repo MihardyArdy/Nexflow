@@ -55,7 +55,7 @@ const config: Config = {
         // 1px inner highlight on top + soft drop = premium card material
         card: "inset 0 1px 0 0 rgba(255,255,255,0.04), 0 1px 2px 0 rgba(0,0,0,0.4)",
         "card-hover":
-          "inset 0 1px 0 0 rgba(255,255,255,0.08), 0 14px 44px -14px rgba(0,0,0,0.7), 0 0 28px -10px rgba(16,185,129,0.22)",
+          "inset 0 1px 0 0 rgba(255,255,255,0.07), 0 14px 44px -14px rgba(0,0,0,0.7)",
         glow: "0 0 40px -8px rgba(16,185,129,0.45)",
         "glow-lg": "0 0 90px -20px rgba(16,185,129,0.55)",
         "glow-indigo": "0 0 50px -12px rgba(99,102,241,0.45)",

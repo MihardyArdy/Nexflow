@@ -29,7 +29,7 @@ export function Testimonials() {
         />
 
         <Reveal className="mx-auto max-w-4xl">
-          <div className="edge-glow relative overflow-hidden rounded-3xl border border-accent/25 bg-bg-3/60 p-6 shadow-card sm:p-9">
+          <div className="relative overflow-hidden rounded-3xl border border-accent/25 bg-bg-3/60 p-6 shadow-card sm:p-9">
             {/* ambient corner glow */}
             <div
               className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 bg-[radial-gradient(closest-side,rgba(16,185,129,0.16),transparent)]"

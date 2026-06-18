@@ -19,7 +19,7 @@ function Bubble({
         "max-w-[82%] animate-bubble-in rounded-2xl px-3.5 py-2.5 text-[12.5px] leading-relaxed",
         side === "in"
           ? "self-start rounded-bl-sm border border-border bg-bg-3 text-fg"
-          : "self-end rounded-br-sm bg-gradient-to-br from-[#0d5f47] to-accent text-white shadow-glow"
+          : "self-end rounded-br-sm bg-gradient-to-br from-[#0d5f47] to-accent text-white"
       )}
     >
       {children}
@@ -135,7 +135,7 @@ export function ChatMockup() {
   }
 
   return (
-    <div className="edge-glow relative mx-auto w-full max-w-[360px] overflow-hidden rounded-2xl border border-border-2 bg-bg-2 shadow-card-hover lg:ml-auto lg:mr-0">
+    <div className="relative mx-auto w-full max-w-[360px] overflow-hidden rounded-2xl border border-border-2 bg-bg-2 shadow-card-hover lg:ml-auto lg:mr-0">
       {/* header */}
       <div className="flex items-center gap-3 border-b border-border bg-bg-3/80 px-4 py-3">
         <div className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-accent to-indigo text-sm font-bold text-black">
