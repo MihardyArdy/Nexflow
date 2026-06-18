@@ -46,10 +46,10 @@ const config: Config = {
         "extra-tight": "-0.03em",
       },
       fontSize: {
-        // editorial display scale (clamp = fluid)
-        "display-1": ["clamp(2.75rem, 8vw, 5.25rem)", { lineHeight: "1.02", letterSpacing: "-0.035em" }],
-        "display-2": ["clamp(2rem, 5vw, 3.25rem)", { lineHeight: "1.08", letterSpacing: "-0.03em" }],
-        "display-3": ["clamp(1.5rem, 3vw, 2.25rem)", { lineHeight: "1.12", letterSpacing: "-0.025em" }],
+        // editorial display scale (clamp = fluid) — bold & confident
+        "display-1": ["clamp(3rem, 9vw, 6.25rem)", { lineHeight: "1.0", letterSpacing: "-0.04em" }],
+        "display-2": ["clamp(2.15rem, 5.5vw, 3.6rem)", { lineHeight: "1.05", letterSpacing: "-0.035em" }],
+        "display-3": ["clamp(1.6rem, 3.2vw, 2.4rem)", { lineHeight: "1.1", letterSpacing: "-0.03em" }],
       },
       boxShadow: {
         // 1px inner highlight on top + soft drop = premium card material

@@ -1,6 +1,7 @@
 import { Zap } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { FlowLines } from "@/components/ui/FlowLines";
 import { buttonClass } from "@/components/ui/Button";
 import { ChatMockup } from "./ChatMockup";
 import { waLink, WA_MESSAGES } from "@/lib/constants";
@@ -13,7 +14,9 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
         aria-hidden
       >
-        <div className="absolute inset-0 bg-grid mask-radial opacity-50" />
+        <div className="absolute inset-0 mask-radial opacity-70">
+          <FlowLines />
+        </div>
         <div className="absolute left-1/2 top-0 h-[380px] w-[560px] -translate-x-1/2 bg-[radial-gradient(closest-side,rgba(16,185,129,0.14),transparent)]" />
       </div>
 

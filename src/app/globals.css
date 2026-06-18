@@ -265,6 +265,29 @@ section.bg-bg-2 {
   }
 }
 
+/* Signature flow connector that "draws" itself on scroll (compositor-only, no
+   JS). pathLength="1" normalizes the dash math. Visible by default so reduced
+   motion / unsupported browsers still see the full line. */
+.flow-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .flow-line {
+      stroke-dashoffset: 1;
+      animation: flowDraw linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 45%;
+    }
+  }
+}
+@keyframes flowDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

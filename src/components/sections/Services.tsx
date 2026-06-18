@@ -14,6 +14,7 @@ export function Services() {
     <Section id="layanan">
       <Container>
         <SectionHeading
+          align="left"
           eyebrow="Layanan Kami"
           title="Spesialis AI WhatsApp untuk UMKM Indonesia"
           desc="Satu platform, tiga fitur yang bekerja 24/7 — dari balas pesan hingga laporan bisnis harian."
@@ -39,7 +40,7 @@ export function Services() {
                     Layanan Utama
                   </span>
                 </div>
-                <span className="font-mono text-xs font-semibold tracking-widest text-fg-subtle">
+                <span className="font-display text-[40px] font-extrabold leading-none tracking-tightest text-fg/10">
                   {main.num}
                 </span>
               </div>
