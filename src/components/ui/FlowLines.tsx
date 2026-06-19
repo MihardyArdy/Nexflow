@@ -28,6 +28,19 @@ export function FlowLines({ className }: { className?: string }) {
         <path d="M-40 500 C 280 450, 540 560, 800 490 S 1110 430, 1240 510" />
       </g>
 
+      {/* glowing data dots that flow along the lines (animated in globals.css) */}
+      <g
+        className="flow-energy"
+        stroke="#34d399"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeDasharray="0.01 22"
+      >
+        <path d="M-40 160 C 240 100, 420 240, 660 180 S 1060 110, 1240 200" />
+        <path d="M-40 340 C 220 400, 470 280, 700 360 S 1080 450, 1240 330" />
+        <path d="M-40 500 C 280 450, 540 560, 800 490 S 1110 430, 1240 510" />
+      </g>
+
       <g fill="#34d399">
         <circle cx="660" cy="180" r="3.5" opacity="0.7" />
         <circle cx="700" cy="360" r="3.5" opacity="0.7" />

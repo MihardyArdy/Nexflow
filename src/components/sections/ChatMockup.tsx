@@ -135,7 +135,7 @@ export function ChatMockup() {
   }
 
   return (
-    <div className="relative mx-auto w-full max-w-[360px] overflow-hidden rounded-2xl border border-border-2 bg-bg-2 shadow-card-hover lg:ml-auto lg:mr-0">
+    <div className="float-soft relative mx-auto w-full max-w-[360px] overflow-hidden rounded-2xl border border-border-2 bg-bg-2 shadow-card-hover lg:ml-auto lg:mr-0">
       {/* header */}
       <div className="flex items-center gap-3 border-b border-border bg-bg-3/80 px-4 py-3">
         <div className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-accent to-indigo text-sm font-bold text-black">

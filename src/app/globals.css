@@ -288,6 +288,92 @@ section.bg-bg-2 {
   }
 }
 
+/* ------------- Luxurious ambient motion (GPU; reduced-motion safe) -------- */
+/* Drifting aurora blobs — a living, premium backdrop (transform-only = cheap). */
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.aurora::before,
+.aurora::after {
+  content: "";
+  position: absolute;
+  width: 65%;
+  height: 65%;
+  border-radius: 50%;
+}
+.aurora::before {
+  top: -12%;
+  left: -8%;
+  background: radial-gradient(closest-side, rgba(16, 185, 129, 0.14), transparent 70%);
+}
+.aurora::after {
+  right: -10%;
+  bottom: -18%;
+  background: radial-gradient(closest-side, rgba(99, 102, 241, 0.1), transparent 70%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .aurora::before {
+    will-change: transform;
+    animation: auroraA 26s ease-in-out infinite;
+  }
+  .aurora::after {
+    will-change: transform;
+    animation: auroraB 32s ease-in-out infinite;
+  }
+  /* gentle float for focal elements (hero chat) */
+  .float-soft {
+    will-change: transform;
+    animation: floatSoft 6.5s ease-in-out infinite;
+  }
+  /* glowing data dots flowing along the signature flow lines */
+  .flow-energy path {
+    animation: flowEnergy 4.5s linear infinite;
+  }
+  .flow-energy path:nth-child(2) {
+    animation-duration: 6s;
+    animation-delay: -1.5s;
+  }
+  .flow-energy path:nth-child(3) {
+    animation-duration: 7s;
+    animation-delay: -3s;
+  }
+}
+@keyframes auroraA {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(14%, 10%, 0) scale(1.15);
+  }
+}
+@keyframes auroraB {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-12%, -8%, 0) scale(1.12);
+  }
+}
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes flowEnergy {
+  to {
+    stroke-dashoffset: -220;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
