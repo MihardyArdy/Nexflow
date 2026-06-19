@@ -13,6 +13,14 @@ import {
   Lock,
   Rocket,
   Handshake,
+  Brain,
+  Send,
+  BellRing,
+  FileText,
+  Sparkles,
+  CreditCard,
+  Wrench,
+  LogOut,
 } from "lucide-react";
 import { WA_MESSAGES } from "./constants";
 
@@ -398,3 +406,89 @@ export const FOOTER_COLUMNS = [
     ],
   },
 ] as const;
+
+/* --------------------------- Automation pipeline ---------------------- */
+/** The message lifecycle, visualized as a scroll-told flow. */
+export interface PipelineStage {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+}
+
+export const PIPELINE_STAGES: PipelineStage[] = [
+  {
+    icon: MessageSquare,
+    title: "Pesan masuk",
+    desc: "Chat dari WhatsApp, Shopee, dan Tokopedia mengalir ke satu sistem.",
+  },
+  {
+    icon: Brain,
+    title: "AI paham maksudnya",
+    desc: "Bot mengenali intent pelanggan: mau beli, sekadar tanya, atau komplain.",
+  },
+  {
+    icon: Send,
+    title: "Balas dalam <3 detik",
+    desc: "Jawaban natural & relevan terkirim otomatis — 24 jam, tanpa libur.",
+  },
+  {
+    icon: Target,
+    title: "Lead dinilai otomatis",
+    desc: "Prospek panas ter-grade dan diprioritaskan, yang dingin tetap di-follow up.",
+  },
+  {
+    icon: BellRing,
+    title: "Owner langsung dinotif",
+    desc: "Lead panas dikabarkan ke kamu seketika supaya peluang closing tidak bocor.",
+  },
+  {
+    icon: FileText,
+    title: "Laporan tiap pagi",
+    desc: "Ringkasan order, lead baru, dan performa bot masuk ke WhatsApp kamu.",
+  },
+];
+
+/* ------------------------------ Comparison ---------------------------- */
+export const COMPARE_COLS = ["Nexflow", "CS Manual", "Bot Biasa"] as const;
+
+export interface CompareRow {
+  feature: string;
+  /** value per column: boolean = check/cross, string = label */
+  values: [string | boolean, string | boolean, string | boolean];
+}
+
+export const COMPARE_ROWS: CompareRow[] = [
+  { feature: "Balas 24/7 tanpa libur", values: [true, false, true] },
+  { feature: "Respons di bawah 3 detik", values: [true, "Lambat", true] },
+  { feature: "Paham bahasa natural", values: [true, true, false] },
+  { feature: "Nilai & prioritas lead otomatis", values: [true, false, false] },
+  { feature: "Laporan bisnis harian", values: [true, false, false] },
+  { feature: "Tidak capek, sakit, atau resign", values: [true, false, true] },
+  { feature: "Biaya per bulan", values: ["Mulai Rp199rb", "Rp 1–2 jt+", "Murah tapi kaku"] },
+  { feature: "Disetup oleh tim untukmu", values: [true, "—", false] },
+];
+
+/* ------------------------------ Guarantee ----------------------------- */
+export interface Guarantee {
+  icon: LucideIcon;
+  label: string;
+}
+
+export const GUARANTEES: Guarantee[] = [
+  { icon: Sparkles, label: "Coba gratis 7 hari" },
+  { icon: CreditCard, label: "Tanpa kartu kredit" },
+  { icon: Wrench, label: "Setup oleh tim kami" },
+  { icon: LogOut, label: "Berhenti kapan saja" },
+];
+
+/* ------------------------------- Founder ------------------------------ */
+export const FOUNDER = {
+  eyebrow: "Cerita Kami",
+  title: "Kenapa Kami Bangun Nexflow",
+  body: [
+    "Kami tim kecil yang baru mulai — dan kami jujur soal itu. Kami terlalu sering melihat UMKM hebat kehilangan pelanggan cuma karena telat balas chat beberapa menit.",
+    "Nexflow lahir dari keyakinan sederhana: pemilik usaha harusnya fokus mengembangkan bisnis, bukan begadang balas WhatsApp. Teknologi yang dulu cuma terjangkau brand besar, kami buat ramah untuk warung, toko online, dan jasa lokal.",
+    "Karena kami baru, kamu dapat perhatian penuh kami. Setiap klien pertama kami bangun langsung oleh tim — bukan dilempar ke tiket support.",
+  ],
+  signoff: "— Tim Nexflow",
+} as const;

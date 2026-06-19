@@ -7,7 +7,7 @@ import { ADVANTAGES } from "@/lib/content";
 
 export function Advantages() {
   return (
-    <Section alt>
+    <Section>
       <Container>
         <SectionHeading
           eyebrow="Keunggulan"

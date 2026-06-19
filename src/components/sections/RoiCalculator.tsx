@@ -83,7 +83,7 @@ export function RoiCalculator() {
   const extraRevenue = extraOrders * order;
 
   return (
-    <Section id="roi">
+    <Section id="roi" alt>
       <Container>
         <SectionHeading
           eyebrow="Kalkulator ROI"

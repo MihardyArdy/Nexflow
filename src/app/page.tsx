@@ -8,11 +8,15 @@ import { Stats } from "@/components/sections/Stats";
 import { Brands } from "@/components/sections/Brands";
 import { Problems } from "@/components/sections/Problems";
 import { Services } from "@/components/sections/Services";
+import { Pipeline } from "@/components/sections/Pipeline";
 import { Advantages } from "@/components/sections/Advantages";
+import { Comparison } from "@/components/sections/Comparison";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { Founder } from "@/components/sections/Founder";
 import { RoiCalculator } from "@/components/sections/RoiCalculator";
 import { Pricing } from "@/components/sections/Pricing";
+import { Guarantee } from "@/components/sections/Guarantee";
 import { FAQ } from "@/components/sections/FAQ";
 import { LeadSection } from "@/components/sections/LeadSection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -31,11 +35,15 @@ export default function Home() {
         <Brands />
         <Problems />
         <Services />
+        <Pipeline />
         <Advantages />
+        <Comparison />
         <HowItWorks />
         <Testimonials />
+        <Founder />
         <RoiCalculator />
         <Pricing />
+        <Guarantee />
         <FAQ />
         <LeadSection />
         <FinalCTA />
