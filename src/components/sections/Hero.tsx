@@ -1,7 +1,6 @@
 import { Zap } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { FlowLines } from "@/components/ui/FlowLines";
 import { buttonClass } from "@/components/ui/Button";
 import { ChatMockup } from "./ChatMockup";
 import { waLink, WA_MESSAGES } from "@/lib/constants";
@@ -15,9 +14,6 @@ export function Hero() {
         aria-hidden
       >
         <div className="aurora absolute inset-0" />
-        <div className="absolute inset-0 mask-radial opacity-70">
-          <FlowLines />
-        </div>
       </div>
 
       <Container>
