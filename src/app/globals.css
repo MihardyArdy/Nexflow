@@ -81,37 +81,14 @@
     background-size: 56px 56px;
   }
 
-  /* Radial fade mask for marquee edges. */
-  .mask-fade-x {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      #000 12%,
-      #000 88%,
-      transparent
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      #000 12%,
-      #000 88%,
-      transparent
-    );
-  }
-
   /* Radial fade mask so the grid/glow dissolves toward the edges. */
   .mask-radial {
     -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
     mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
   }
 
-  .pause-hover:hover {
-    animation-play-state: paused;
-  }
-
-  /* Animated conic "premium" border. A masked 1px ring with a slowly rotating
-     emerald arc — works on top of any background, GPU-composited, mobile-safe.
-     Reduced motion freezes the arc (handled below). */
+  /* Static emerald arc — a masked 1px premium ring for featured surfaces.
+     Painted once (no animation) so it costs nothing during scroll. */
   .edge-glow::before {
     content: "";
     position: absolute;
@@ -120,7 +97,7 @@
     border-radius: inherit;
     padding: 1px;
     background: conic-gradient(
-      from var(--border-angle, 0deg),
+      from 130deg,
       transparent 0%,
       transparent 58%,
       theme("colors.accent.2") 76%,
@@ -131,21 +108,7 @@
       linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    animation: borderSpin 8s linear infinite;
     pointer-events: none;
-  }
-}
-
-/* Custom property so the conic angle can actually animate (smooth in all
-   current evergreen browsers; degrades to a static arc otherwise). */
-@property --border-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-@keyframes borderSpin {
-  to {
-    --border-angle: 360deg;
   }
 }
 
@@ -165,54 +128,15 @@ body::after {
   transform: translateZ(0);
 }
 
-/* ------------------------------- 3D logo --------------------------------- */
-/* The Nexflow mark (unchanged webp) becomes a living 3D object: a constant
-   subtle perspective tilt at rest, and a full 360° flip on hover. Pure GPU
-   `transform` on one 32px element — effectively free. The emerald glow is a
-   static drop-shadow (painted once) that only brightens on hover. */
-.logo-3d {
-  perspective: 520px;
-}
+/* --------------------------------- Logo ---------------------------------- */
+/* The Nexflow mark sits with a soft, static emerald glow that gently
+   brightens on hover. No idle animation — effectively free. */
 .logo-3d__mark {
   filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.28));
   transition: filter 0.4s var(--ease-premium);
 }
 .logo-3d-root:hover .logo-3d__mark {
   filter: drop-shadow(0 0 9px rgba(16, 185, 129, 0.55));
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .logo-3d__mark {
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-    will-change: transform;
-    animation: logoBob 6.5s ease-in-out infinite;
-  }
-  /* hover swaps the gentle bob for a one-shot 3D flip */
-  .logo-3d-root:hover .logo-3d__mark {
-    animation: logoFlip 0.85s var(--ease-premium);
-  }
-}
-
-@keyframes logoBob {
-  0%,
-  100% {
-    transform: rotateY(-13deg) rotateX(7deg);
-  }
-  50% {
-    transform: rotateY(13deg) rotateX(-5deg) translateZ(6px);
-  }
-}
-@keyframes logoFlip {
-  0% {
-    transform: rotateY(0) scale(1);
-  }
-  55% {
-    transform: rotateY(200deg) scale(1.14);
-  }
-  100% {
-    transform: rotateY(360deg) scale(1);
-  }
 }
 
 /* Skip layout/paint for off-screen sections — large scroll-perf win, zero JS.
@@ -233,12 +157,12 @@ section.bg-bg-2 {
 }
 
 /* ----------------------------- Scroll reveal ----------------------------- */
-/* Only hide content when motion is allowed; reduced-motion users see it
-   immediately and nothing animates. */
+/* One-shot fade-up as each element scrolls into view (opacity + transform =
+   compositor-only, fires once). Behind prefers-reduced-motion so reduced-motion
+   and no-JS users always see content immediately. */
 @media (prefers-reduced-motion: no-preference) {
   .reveal {
     opacity: 0;
-    /* gentle rise + micro-settle scale (transform/opacity only = cheap) */
     transform: translateY(16px) scale(0.985);
     transition: opacity 0.55s var(--ease-premium),
       transform 0.55s var(--ease-premium);
@@ -251,8 +175,8 @@ section.bg-bg-2 {
   }
 }
 
-/* Reading-progress bar: scaleX driven by page scroll, compositor-only (no JS).
-   Unsupported browsers keep the bar at scale-x-0 (hidden) — purely decorative. */
+/* Reading-progress bar: scaleX driven by page scroll, compositor-only (no JS,
+   transform-only = no repaint). Unsupported browsers keep it hidden. */
 @supports (animation-timeline: scroll()) {
   .scroll-progress {
     animation: scrollProgress linear both;
@@ -265,31 +189,16 @@ section.bg-bg-2 {
   }
 }
 
-/* Signature flow connector that "draws" itself on scroll (compositor-only, no
-   JS). pathLength="1" normalizes the dash math. Visible by default so reduced
-   motion / unsupported browsers still see the full line. */
+/* Signature flow connector — drawn statically (full line, no scroll-coupled
+   SVG repaint). Decorative only. */
 .flow-line {
   stroke-dasharray: 1;
   stroke-dashoffset: 0;
 }
-@media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .flow-line {
-      stroke-dashoffset: 1;
-      animation: flowDraw linear both;
-      animation-timeline: view();
-      animation-range: entry 5% cover 45%;
-    }
-  }
-}
-@keyframes flowDraw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
 
-/* ------------- Luxurious ambient motion (GPU; reduced-motion safe) -------- */
-/* Drifting aurora blobs — a living, premium backdrop (transform-only = cheap). */
+/* ----------------- Static ambient backdrop (hero glow) ------------------- */
+/* Two soft color blobs behind the hero — a premium *static* backdrop. No drift
+   animation, so it never repaints during scroll. */
 .aurora {
   position: absolute;
   inset: 0;
@@ -314,66 +223,6 @@ section.bg-bg-2 {
   background: radial-gradient(closest-side, rgba(99, 102, 241, 0.1), transparent 70%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .aurora::before {
-    will-change: transform;
-    animation: auroraA 26s ease-in-out infinite;
-  }
-  .aurora::after {
-    will-change: transform;
-    animation: auroraB 32s ease-in-out infinite;
-  }
-  /* gentle float for focal elements (hero chat) */
-  .float-soft {
-    will-change: transform;
-    animation: floatSoft 6.5s ease-in-out infinite;
-  }
-  /* glowing data dots flowing along the signature flow lines */
-  .flow-energy path {
-    animation: flowEnergy 4.5s linear infinite;
-  }
-  .flow-energy path:nth-child(2) {
-    animation-duration: 6s;
-    animation-delay: -1.5s;
-  }
-  .flow-energy path:nth-child(3) {
-    animation-duration: 7s;
-    animation-delay: -3s;
-  }
-}
-@keyframes auroraA {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(14%, 10%, 0) scale(1.15);
-  }
-}
-@keyframes auroraB {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-12%, -8%, 0) scale(1.12);
-  }
-}
-@keyframes floatSoft {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-@keyframes flowEnergy {
-  to {
-    stroke-dashoffset: -220;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -382,11 +231,5 @@ section.bg-bg-2 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
-  }
-
-  /* Marquee: rest cleanly at the start (full logo row visible), not mid-track. */
-  .animate-marquee {
-    animation: none !important;
-    transform: none !important;
   }
 }

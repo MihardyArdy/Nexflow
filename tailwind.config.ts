@@ -65,7 +65,6 @@ const config: Config = {
         "out-back": "cubic-bezier(0.34,1.56,0.64,1)",
       },
       animation: {
-        marquee: "marquee 45s linear infinite",
         "fade-up": "fadeUp 0.5s cubic-bezier(0.22,0.61,0.36,1) forwards",
         "typing-1": "typingBounce 1.2s ease-in-out 0s infinite",
         "typing-2": "typingBounce 1.2s ease-in-out 0.2s infinite",
@@ -73,7 +72,6 @@ const config: Config = {
         "bubble-in": "bubbleIn 0.4s cubic-bezier(0.22,0.61,0.36,1) forwards",
       },
       keyframes: {
-        marquee: { to: { transform: "translateX(-50%)" } },
         fadeUp: {
           from: { opacity: "0", transform: "translateY(14px)" },
           to: { opacity: "1", transform: "translateY(0)" },

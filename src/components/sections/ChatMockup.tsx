@@ -84,11 +84,9 @@ export function ChatMockup() {
     const step = (i: number) => {
       if (cancelled) return;
       if (i >= HERO_CHAT.length) {
-        after(3200, () => {
-          setMessages([]);
-          setTyping(false);
-          after(500, () => step(0));
-        });
+        // Play the scripted preview once, then rest. The finished chat stays on
+        // screen and the visitor can take over by typing — no perpetual re-loop,
+        // so idle CPU/GPU stays at zero.
         return;
       }
       if (HERO_CHAT[i].side === "out") {
@@ -135,7 +133,7 @@ export function ChatMockup() {
   }
 
   return (
-    <div className="float-soft relative mx-auto w-full max-w-[360px] overflow-hidden rounded-2xl border border-border-2 bg-bg-2 shadow-card-hover lg:ml-auto lg:mr-0">
+    <div className="relative mx-auto w-full max-w-[360px] overflow-hidden rounded-2xl border border-border-2 bg-bg-2 shadow-card-hover lg:ml-auto lg:mr-0">
       {/* header */}
       <div className="flex items-center gap-3 border-b border-border bg-bg-3/80 px-4 py-3">
         <div className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-accent to-indigo text-sm font-bold text-black">

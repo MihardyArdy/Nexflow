@@ -55,7 +55,7 @@ export function Nav() {
       className={cn(
         "sticky top-0 z-50 border-b transition-colors duration-300 ease-premium",
         scrolled
-          ? "border-border bg-bg/85 backdrop-blur-md"
+          ? "border-border bg-bg/95"
           : "border-transparent bg-transparent"
       )}
     >
@@ -125,7 +125,7 @@ export function Nav() {
       >
         <div
           className={cn(
-            "absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300",
+            "absolute inset-0 bg-black/70 transition-opacity duration-300",
             open ? "opacity-100" : "opacity-0"
           )}
           onClick={() => setOpen(false)}
