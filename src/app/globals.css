@@ -87,6 +87,24 @@
     mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
   }
 
+  /* Linear fade mask for the brand marquee edges. */
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 12%,
+      #000 88%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 12%,
+      #000 88%,
+      transparent
+    );
+  }
+
   /* Static emerald arc — a masked 1px premium ring for featured surfaces.
      Painted once (no animation) so it costs nothing during scroll. */
   .edge-glow::before {
@@ -231,5 +249,11 @@ section.bg-bg-2 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Marquee: rest cleanly at the start (full logo row visible), not mid-track. */
+  .animate-marquee {
+    animation: none !important;
+    transform: none !important;
   }
 }

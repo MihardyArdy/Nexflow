@@ -21,12 +21,14 @@ const LOGOS: Record<string, { src: string; w: number; mono?: boolean }> = {
 };
 
 /**
- * Integration partner logos — a static, centered row that wraps on small
- * screens. No marquee: nothing animates, so the section is free to render and
- * never costs anything during scroll. Logos sit directly on the dark
- * background, normalized to a uniform 28px height.
+ * Seamless right-to-left marquee of integration partner logos. The list is
+ * duplicated and the track translates by -50%, so the loop never jumps. Pure
+ * `transform: translateX` on the compositor thread — no layout/paint per
+ * frame, so it stays smooth even on lower-end phones. Logos sit directly on
+ * the dark background, normalized to a uniform 28px height.
  */
 export function Brands() {
+  const items = [...BRANDS, ...BRANDS];
   return (
     <section
       aria-label="Integrasi platform"
@@ -35,31 +37,33 @@ export function Brands() {
       <p className="mb-7 px-5 text-center font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-fg-subtle">
         Terhubung dengan platform yang sudah kamu pakai
       </p>
-      <ul className="mx-auto flex max-w-content flex-wrap items-center justify-center gap-x-10 gap-y-6 px-5 sm:gap-x-14">
-        {BRANDS.map((brand) => {
-          const logo = LOGOS[brand];
-          return (
-            <li key={brand} className="flex shrink-0 items-center">
-              <Image
-                src={logo.src}
-                alt={`Logo ${brand}`}
-                width={logo.w}
-                height={28}
-                quality={85}
-                loading="lazy"
-                /* Next's optimizer rejects SVG by default; serve those as-is. */
-                unoptimized={logo.src.endsWith(".svg")}
-                style={{ height: 28, width: logo.w }}
-                className={cn(
-                  "object-contain opacity-75 transition-opacity duration-200 hover:opacity-100",
-                  logo.mono && "brightness-0 invert"
-                )}
-                draggable={false}
-              />
-            </li>
-          );
-        })}
-      </ul>
+      <div className="group relative overflow-hidden mask-fade-x">
+        <ul className="flex w-max will-change-transform animate-marquee items-center gap-20 group-hover:[animation-play-state:paused]">
+          {items.map((brand, i) => {
+            const logo = LOGOS[brand];
+            return (
+              <li key={i} className="flex shrink-0 items-center">
+                <Image
+                  src={logo.src}
+                  alt={`Logo ${brand}`}
+                  width={logo.w}
+                  height={28}
+                  quality={85}
+                  loading="lazy"
+                  /* Next's optimizer rejects SVG by default; serve those as-is. */
+                  unoptimized={logo.src.endsWith(".svg")}
+                  style={{ height: 28, width: logo.w }}
+                  className={cn(
+                    "object-contain opacity-75 transition-opacity duration-200 hover:opacity-100",
+                    logo.mono && "brightness-0 invert"
+                  )}
+                  draggable={false}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </section>
   );
 }
