@@ -483,12 +483,13 @@ export const GUARANTEES: Guarantee[] = [
 
 /* ------------------------------- Founder ------------------------------ */
 export const FOUNDER = {
-  eyebrow: "Cerita Kami",
-  title: "Kenapa Kami Bangun Nexflow",
+  eyebrow: "Cerita Saya",
+  title: "Kenapa Saya Bangun Nexflow",
   body: [
-    "Kami tim kecil yang baru mulai — dan kami jujur soal itu. Kami terlalu sering melihat UMKM hebat kehilangan pelanggan cuma karena telat balas chat beberapa menit.",
-    "Nexflow lahir dari keyakinan sederhana: pemilik usaha harusnya fokus mengembangkan bisnis, bukan begadang balas WhatsApp. Teknologi yang dulu cuma terjangkau brand besar, kami buat ramah untuk warung, toko online, dan jasa lokal.",
-    "Karena kami baru, kamu dapat perhatian penuh kami. Setiap klien pertama kami bangun langsung oleh tim — bukan dilempar ke tiket support.",
+    "Nexflow saya bangun sendirian.",
+    "Saya sering lihat usaha kecil kayak klinik, salon, catering, atau petshop kehilangan calon pelanggan cuma karena telat balas chat WhatsApp. Padahal orangnya udah niat beli, cuma nanya-nanya duluan.",
+    "Saya bikin sistem yang jawab chat itu otomatis 24 jam, dengan bahasa yang gak kaku kayak chatbot kebanyakan.",
+    "Karena masih saya kerjain sendiri, tiap klien saya setup dan pegang langsung sampai jalan.",
   ],
-  signoff: "— Tim Nexflow",
+  signoff: "— Ard, founder Nexflow",
 } as const;
