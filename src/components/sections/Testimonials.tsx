@@ -25,7 +25,7 @@ export function Testimonials() {
               </span>
             </>
           }
-          desc="Kami baru — dan kami transparan soal itu. Posisi klien pertama masih terbuka, lengkap dengan keistimewaan yang tidak akan ada lagi setelah ini."
+          desc="Saya baru mulai — dan transparan soal itu. Slot klien pertama masih terbuka, dengan keistimewaan yang gak akan ada lagi setelah ini."
         />
 
         <Reveal className="mx-auto max-w-4xl">
@@ -46,17 +46,17 @@ export function Testimonials() {
                   Kuota terbatas · slot pertama
                 </span>
                 <h3 className="mt-4 text-[clamp(1.35rem,3vw,1.75rem)] font-bold leading-tight text-fg">
-                  Testimoni nyata segera hadir.
+                  Belum ada testimoni, karena belum ada klien pertama.
                   <br />
-                  <span className="text-fg-muted">Dan bisa jadi punyamu.</span>
+                  <span className="text-fg-muted">Itu bisa jadi kamu.</span>
                 </h3>
                 <p className="mt-4 max-w-md text-[14px] leading-relaxed text-fg-muted">
-                  Coba gratis 7 hari, tanpa kartu kredit. Kalau cocok, kamu masuk
+                  Coba gratis 30 hari, tanpa kartu kredit. Kalau cocok, kamu masuk
                   sebagai klien pertama dengan harga & akses khusus di bawah ini.
                 </p>
                 <a
                   href={waLink(
-                    "Halo Nexflow, saya mau coba gratis 7 hari dan jadi klien pertama"
+                    "Halo Nexflow, saya mau coba gratis 30 hari dan jadi klien pertama"
                   )}
                   target="_blank"
                   rel="noopener noreferrer"

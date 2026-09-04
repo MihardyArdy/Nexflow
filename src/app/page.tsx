@@ -13,7 +13,6 @@ import { Advantages } from "@/components/sections/Advantages";
 import { Comparison } from "@/components/sections/Comparison";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { Founder } from "@/components/sections/Founder";
 import { RoiCalculator } from "@/components/sections/RoiCalculator";
 import { Pricing } from "@/components/sections/Pricing";
 import { Guarantee } from "@/components/sections/Guarantee";
@@ -40,7 +39,6 @@ export default function Home() {
         <Comparison />
         <HowItWorks />
         <Testimonials />
-        <Founder />
         <RoiCalculator />
         <Pricing />
         <Guarantee />

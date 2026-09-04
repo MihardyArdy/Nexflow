@@ -51,17 +51,17 @@ export const FOUNDING_PERKS: FoundingPerk[] = [
   {
     icon: Lock,
     title: "Harga early-bird terkunci",
-    desc: "Tarif khusus klien pertama, terkunci selamanya — tidak ikut naik saat harga publik naik.",
+    desc: "Mulai Rp199k/bulan, terkunci selamanya — gak ikut naik saat harga publik naik.",
   },
   {
     icon: Rocket,
     title: "Prioritas setup & onboarding",
-    desc: "Antrian setup paling depan. Sistem kamu kami bangun dan live duluan.",
+    desc: "Antrian setup paling depan. Sistem kamu saya bangun dan live duluan.",
   },
   {
     icon: Handshake,
     title: "Akses langsung ke founder",
-    desc: "Bukan tiket support. Kamu ngobrol langsung dengan tim yang membangun Nexflow.",
+    desc: "Setiap chat setup langsung ke saya — dari awal sampai sistem kamu jalan.",
   },
 ];
 
@@ -480,16 +480,3 @@ export const GUARANTEES: Guarantee[] = [
   { icon: Wrench, label: "Setup oleh tim kami" },
   { icon: LogOut, label: "Berhenti kapan saja" },
 ];
-
-/* ------------------------------- Founder ------------------------------ */
-export const FOUNDER = {
-  eyebrow: "Cerita Saya",
-  title: "Kenapa Saya Bangun Nexflow",
-  body: [
-    "Nexflow saya bangun sendirian.",
-    "Saya sering lihat usaha kecil kayak klinik, salon, catering, atau petshop kehilangan calon pelanggan cuma karena telat balas chat WhatsApp. Padahal orangnya udah niat beli, cuma nanya-nanya duluan.",
-    "Saya bikin sistem yang jawab chat itu otomatis 24 jam, dengan bahasa yang gak kaku kayak chatbot kebanyakan.",
-    "Karena masih saya kerjain sendiri, tiap klien saya setup dan pegang langsung sampai jalan.",
-  ],
-  signoff: "— Ard, founder Nexflow",
-} as const;
