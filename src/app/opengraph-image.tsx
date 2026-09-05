@@ -76,7 +76,7 @@ export default function OpengraphImage() {
 
         {/* footer tags */}
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          {["Balas <3 detik", "24/7 nonstop", "Coba gratis 7 hari"].map((t) => (
+          {["Balas <3 detik", "24/7 nonstop", "Coba gratis 30 hari"].map((t) => (
             <div
               key={t}
               style={{

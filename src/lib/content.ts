@@ -36,7 +36,7 @@ export const STATS: Stat[] = [
   { value: "24/7", label: "Operasi nonstop" },
   { value: "<3 dtk", label: "Waktu respons bot" },
   { value: "8+", label: "Platform terintegrasi" },
-  { value: "7 hari", label: "Coba gratis" },
+  { value: "30 hari", label: "Coba gratis" },
 ];
 
 /* --------------------------- Founding client -------------------------- */
@@ -202,7 +202,7 @@ export const ADVANTAGES: Advantage[] = [
   {
     icon: TrendingUp,
     title: "Harga Terjangkau, ROI Jelas",
-    desc: "Mulai Rp199.000/bulan — hemat 6+ jam kerja per hari. Coba gratis 7 hari, tidak perlu kartu kredit.",
+    desc: "Mulai Rp199.000/bulan — hemat 6+ jam kerja per hari. Coba gratis 30 hari, tidak perlu kartu kredit.",
   },
 ];
 
@@ -272,7 +272,7 @@ export const PLANS: Plan[] = [
       { label: "Unlimited auto-reply 24/7", included: true },
       { label: "1 nomor WhatsApp Business", included: true },
       { label: "Support WA prioritas", included: true },
-      { label: "Coba gratis 7 hari", included: true },
+      { label: "Coba gratis 30 hari", included: true },
       { label: "Deteksi & notif lead panas", included: false },
       { label: "Daily business briefing", included: false },
       { label: "Custom workflow", included: false },
@@ -296,7 +296,7 @@ export const PLANS: Plan[] = [
       { label: "Daily business briefing ke owner", included: true },
       { label: "1 nomor WhatsApp Business", included: true },
       { label: "Support WA prioritas", included: true },
-      { label: "Coba gratis 7 hari", included: true },
+      { label: "Coba gratis 30 hari", included: true },
       { label: "Custom workflow", included: false },
     ],
     cta: "Mulai Standard →",
@@ -319,7 +319,7 @@ export const PLANS: Plan[] = [
       { label: "Dedicated account manager", included: true },
       { label: "Laporan mingguan lengkap", included: true },
       { label: "Monitoring komplain otomatis", included: true },
-      { label: "Coba gratis 7 hari", included: true },
+      { label: "Coba gratis 30 hari", included: true },
     ],
     cta: "Mulai Premium →",
     waMessage: WA_MESSAGES.premium,
@@ -383,7 +383,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: "Apakah ada masa percobaan gratis?",
-    a: "Ya, semua paket bisa dicoba gratis selama 7 hari tanpa perlu bayar apapun. Hubungi kami via WhatsApp untuk mulai trial sekarang.",
+    a: "Ya, semua paket bisa dicoba gratis selama 30 hari tanpa perlu bayar apapun. Hubungi kami via WhatsApp untuk mulai trial sekarang.",
   },
 ];
 
@@ -475,7 +475,7 @@ export interface Guarantee {
 }
 
 export const GUARANTEES: Guarantee[] = [
-  { icon: Sparkles, label: "Coba gratis 7 hari" },
+  { icon: Sparkles, label: "Coba gratis 30 hari" },
   { icon: CreditCard, label: "Tanpa kartu kredit" },
   { icon: Wrench, label: "Setup oleh tim kami" },
   { icon: LogOut, label: "Berhenti kapan saja" },

@@ -30,7 +30,7 @@ export default function TermsPage() {
         {
           heading: "Masa Coba Gratis",
           body: [
-            "Semua paket bisa dicoba gratis selama 7 hari tanpa perlu kartu kredit. Kamu bebas berhenti sebelum masa coba berakhir tanpa biaya.",
+            "Semua paket bisa dicoba gratis selama 30 hari tanpa perlu kartu kredit. Kamu bebas berhenti sebelum masa coba berakhir tanpa biaya.",
           ],
         },
         {

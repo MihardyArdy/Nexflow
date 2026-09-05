@@ -9,7 +9,7 @@ import { LeadForm } from "./LeadForm";
 const POINTS = [
   { icon: Zap, text: "Setup cepat — live dalam 1–3 hari kerja." },
   { icon: Clock, text: "Balas chat 24/7, hemat berjam-jam tiap hari." },
-  { icon: ShieldCheck, text: "Coba gratis 7 hari, tanpa kartu kredit." },
+  { icon: ShieldCheck, text: "Coba gratis 30 hari, tanpa kartu kredit." },
 ];
 
 export function LeadSection() {
